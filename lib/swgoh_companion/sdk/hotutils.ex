@@ -1,7 +1,7 @@
 defmodule SWGOHCompanion.SDK.Hotutils do
   alias SWGOHCompanion.SDK
   alias SDK.HTTP
-  alias SDK.Models.{PlayerData, Character, Mod, Stats}
+  alias SDK.Models.{PlayerData, Character, Mod, Stats, Gear}
 
   @url "https://hotutils.com/Production/account/data/all"
   @sessionID "4a9accbe-cb2e-40eb-84cd-0ca76b9ccd3e"
@@ -39,14 +39,22 @@ defmodule SWGOHCompanion.SDK.Hotutils do
          },
          "stats" => stats,
          "mods" => mod_stats,
-         "equippedMods" => mods
+         "equippedMods" => mods,
+         "gear" => %{
+            "level" => gear_level,
+            "count" => gear_count
+         }
        }) do
     %Character{
       id: id,
       power: power,
       stats: decode_stats(stats),
       mod_stats: decode_mod_stats(mod_stats),
-      mods: Enum.map(mods, &decode_mod/1)
+      mods: Enum.map(mods, &decode_mod/1),
+      gear: %Gear{
+        level: gear_level,
+        count: gear_count
+      }
     }
   end
 

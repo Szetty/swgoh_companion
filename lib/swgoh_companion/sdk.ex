@@ -5,7 +5,7 @@ defmodule SWGOHCompanion.SDK do
     common_quote =
       quote do
         alias SWGOHCompanion.SDK
-        alias SDK.Models.{PlayerData, Character, Stats, Mod}
+        alias SDK.Models.{PlayerData, Character, Stats, Mod, Gear}
       end
 
     spreadsheet_quotes =

@@ -9,7 +9,8 @@ defmodule SWGOHCompanion.SDK.Models do
       :power,
       :stats,
       :mod_stats,
-      :mods
+      :mods,
+      :gear
     ]
   end
 
@@ -27,6 +28,13 @@ defmodule SWGOHCompanion.SDK.Models do
       :set_stat_name,
       :secondary_stats,
       :slot
+    ]
+  end
+
+  defmodule Gear do
+    defstruct [
+      :level,
+      :count
     ]
   end
 end
