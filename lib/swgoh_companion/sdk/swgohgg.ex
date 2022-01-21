@@ -1,11 +1,15 @@
 defmodule SWGOHCompanion.SDK.SWGOHGG do
-  alias SWGOHCompanion.SDK.HTTP
+  alias SWGOHCompanion.SDK
+  alias SDK.HTTP
+  alias SDK.Models.{PlayerData, Character, Stats, Gear, Ability}
 
   @player "473362279"
   @percentage_threshold 10
 
   @characters_url "https://swgoh.gg/api/characters"
   @player_url "https://swgoh.gg/api/player"
+
+  @speed_stat "5"
 
   def get_all_characters() do
     IO.puts("Fetching characters")
@@ -20,6 +24,78 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
     |> Path.join(player)
     |> HTTP.get_json()
     |> Map.get("units")
+    |> decode_player_roster_response()
+  end
+
+  defp decode_player_roster_response(characters) do
+    characters =
+      characters
+      |> Enum.filter(&get_in(&1, ["data", "combat_type"]) == 1)
+      |> Enum.map(&decode_character/1)
+
+    %PlayerData{
+      characters: characters
+    }
+  end
+
+  defp decode_character(%{
+    "data" => %{
+      "base_id" => id,
+      "name" => name,
+      "power" => power,
+      "stats" => %{
+        @speed_stat => speed
+      },
+      "gear" => equipped_gear,
+      "gear_level" => gear_level,
+      "relic_tier" => relic_tier,
+      "ability_data" => ability_data,
+      "zeta_abilities" => zeta_abilities,
+      "omicron_abilities" => omicron_abilities,
+    }
+  }) do
+    gear_count = Enum.count(equipped_gear, &Map.get(&1, "is_obtained"))
+    zeta_abilities = Enum.map(zeta_abilities, &decode_ability(ability_data, &1))
+    omicron_abilities = Enum.map(omicron_abilities, &decode_ability(ability_data, &1))
+    %Character{
+      id: id,
+      name: name,
+      power: power,
+      stats: %Stats{
+        speed: speed
+      },
+      gear: %Gear{
+        level: gear_level,
+        count: gear_count
+      },
+      # Quick fix for swgoh.gg bug where relic tiers are always bigger with 2
+      relic_tier: max(relic_tier - 2, 0),
+      # relic_tier: relic_tier,
+      zeta_abilities: zeta_abilities,
+      omicron_abilities: omicron_abilities
+    }
+  end
+
+  defp decode_ability(ability_data, ability_id) do
+    %{
+      "name" => name
+    } = Enum.find(ability_data, &Map.get(&1, "id") == ability_id)
+    scan_result = Regex.scan(~r/^(.+)skill_.+(\d{2})$/, ability_id)
+    {type, order} =
+      if scan_result != [] do
+        [[_, type, order]] = scan_result
+        {order, ""} = Integer.parse(order)
+        {type, order}
+      else
+        [[_, type]] = Regex.scan(~r/^(.+)skill_.+$/, ability_id)
+        {type, nil}
+      end
+
+    %Ability{
+      name: name,
+      type: type,
+      order: order
+    }
   end
 
   @spec get_most_popular_mods([any()]) :: stream :: Enum.t()
