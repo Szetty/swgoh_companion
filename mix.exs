@@ -25,7 +25,8 @@ defmodule SWGOHCompanion.MixProject do
       {:elixir_google_spreadsheets, "~> 0.1.17"},
       {:jason, "~> 1.2"},
       {:tesla, "~> 1.4"},
-      {:floki, "~> 0.31.0"}
+      {:floki, "~> 0.31.0"},
+      {:morphix, "~> 0.8.0"}
     ]
   end
 end

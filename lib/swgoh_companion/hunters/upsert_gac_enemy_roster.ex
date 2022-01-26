@@ -8,10 +8,11 @@ defmodule SWGOHCompanion.Hunters.UpsertGacEnemyRoster do
   alias SWGOHCompanion.Hunters.Common
   alias Common.Team
 
-  def upsert_gac_enemy_roster(nil, _), do: raise "Ally code is required"
+  def upsert_gac_enemy_roster(0, _), do: raise "Round is required"
 
-  def upsert_gac_enemy_roster(ally_code, teams) do
-    (SDK.get_player_roster(ally_code)).characters
+  def upsert_gac_enemy_roster(round_path, teams) do
+    round_path
+    |> fetch_characters()
     |> Common.form_teams_and_separate_rest_of_roster(teams)
     |> write_rows()
   end
@@ -21,13 +22,13 @@ defmodule SWGOHCompanion.Hunters.UpsertGacEnemyRoster do
       teams
       |> Enum.map(fn %Team{
         name: name,
-        power_sum: power_sum,
+        power_avg: power_avg,
         max_speed: max_speed,
         zeta_sum: zeta_sum,
         omicron_sum: omicron_sum,
         characters: characters
       } ->
-        [[name, power_sum, "", "", max_speed, zeta_sum, "", omicron_sum, ""]] ++
+        [[name, power_avg, "", "", max_speed, zeta_sum, "", omicron_sum, ""]] ++
         (Enum.map(characters, &stringify_character/1)) ++
         [[]]
       end)
@@ -70,5 +71,16 @@ defmodule SWGOHCompanion.Hunters.UpsertGacEnemyRoster do
     else
       type
     end
+  end
+
+  defp fetch_characters(round_path) do
+    %{"rest_of_roster" => roster} =
+      round_path
+      |> File.read!()
+      |> Jason.decode!()
+
+    roster
+    |> Enum.map(&Morphix.atomorphiform!/1)
+    |> Enum.map(&Character.new/1)
   end
 end

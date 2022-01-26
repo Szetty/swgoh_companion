@@ -1,11 +1,12 @@
 defmodule SWGOHCompanion.Hunters.Common do
   alias SWGOHCompanion.SDK
+  alias SWGOHCompanion.SDK.Models.Character
 
   defmodule Team do
     @derive Jason.Encoder
     defstruct [
       :name,
-      :power_sum,
+      :power_avg,
       :max_speed,
       :zeta_sum,
       :omicron_sum,
@@ -13,13 +14,32 @@ defmodule SWGOHCompanion.Hunters.Common do
     ]
   end
 
+  @default_teams [
+    ["gas", "st", "rex", "fives", "ctecho", "arct"],
+    ["gba", "sf", "gso", "gsp", "ptl"],
+    ["ep", "mj", "dv"],
+    ["jkr", "gmy", "bs", "jb", "jkl", "gk"],
+    ["gv", "ap", "darkt", "ranget", "mg", "deatht", "cs"],
+    ["cls", "chewie", "t&c", "c3po", "han"],
+    ["bossk", "boba", "jango", "fs", "dengar", "mando", "greef", "zw", "ig-88"],
+    ["padme", "jka", "at", "gk"],
+    ["bando", "ig11", "kuiil"],
+    ["p&p", "wampa", "en", "wt", "gat", "hoda"],
+    ["cc", "ee", "es", "teebo", "logray", "wicket", "paploo"],
+    ["co", "candy", "zaal", "mv", "juhani"]
+  ]
+
+  def form_teams_and_separate_rest_of_roster(roster, :default) do
+    form_teams_and_separate_rest_of_roster(roster, @default_teams)
+  end
+
   def form_teams_and_separate_rest_of_roster(roster, teams) do
     teams =
       teams
       |> Enum.map(&SDK.Acronyms.expand_acronyms(&1))
       |> Enum.map(fn team ->
-        Enum.map(
-          team,
+        team
+        |> Enum.map(
           fn {acronym, character_name} ->
             character = Enum.find(
               roster,
@@ -28,18 +48,24 @@ defmodule SWGOHCompanion.Hunters.Common do
             if character != nil do
               {acronym, character}
             else
-              raise "Could not find character #{character_name}"
+              {acronym, Character.empty(character_name)}
             end
           end
         )
+        |> Enum.with_index()
+        |> Enum.sort_by(fn {{_acronym, %{power: power}}, idx} -> {idx != 0, -power} end)
+        |> Enum.map(fn {value, _idx} -> value end)
       end)
       |> Enum.map(fn characters ->
         {leader_acronym, _} = hd(characters)
         characters = Enum.map(characters, &elem(&1, 1))
-        power_sum =
-          characters
+        characters_with_power = Enum.filter(characters, & &1.power > 5000)
+        power_avg =
+          characters_with_power
           |> Enum.map(& &1.power)
           |> Enum.sum()
+          |> Kernel./(Enum.count(characters_with_power))
+          |> Float.round()
         max_speed =
           characters
           |> Enum.map(& &1.stats.speed)
@@ -55,14 +81,14 @@ defmodule SWGOHCompanion.Hunters.Common do
 
         %Team{
           name: "Team #{String.upcase(leader_acronym)}",
-          power_sum: power_sum,
+          power_avg: power_avg,
           max_speed: max_speed,
           zeta_sum: zeta_sum,
           omicron_sum: omicron_sum,
           characters: characters
         }
       end)
-      |> Enum.sort_by(&(-&1.power_sum))
+      |> Enum.sort_by(&(-&1.power_avg))
 
     characters_in_teams =
       teams

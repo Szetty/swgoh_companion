@@ -2,7 +2,7 @@
 
 set -xe
 
-ALLY_CODE=${1:-"nil"}
+ROUND=${1:-0}
 TEAMS=${2:-"[]"}
 
-mix run -e "SWGOHCompanion.upsert_gac_enemy_roster(\"$ALLY_CODE\", $TEAMS)"
+mix run -e "SWGOHCompanion.upsert_gac_enemy_roster(\"$ROUND\", $TEAMS)"
