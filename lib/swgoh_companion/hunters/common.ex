@@ -29,6 +29,11 @@ defmodule SWGOHCompanion.Hunters.Common do
     ["co", "candy", "zaal", "mv", "juhani"]
   ]
 
+  @team_acronyms %{
+    "geos" => ["gba", "sf", "gso", "gsp", "ptl"],
+    "cls" => ["cls", "chewie", "t&c", "c3po", "han"]
+  }
+
   def form_teams_and_separate_rest_of_roster(roster, :default) do
     form_teams_and_separate_rest_of_roster(roster, @default_teams)
   end
@@ -36,26 +41,12 @@ defmodule SWGOHCompanion.Hunters.Common do
   def form_teams_and_separate_rest_of_roster(roster, teams) do
     teams =
       teams
-      |> Enum.map(&SDK.Acronyms.expand_acronyms(&1))
-      |> Enum.map(fn team ->
-        team
-        |> Enum.map(
-          fn {acronym, character_name} ->
-            character = Enum.find(
-              roster,
-              &(String.downcase(character_name) == String.downcase(&1.name))
-            )
-            if character != nil do
-              {acronym, character}
-            else
-              {acronym, Character.empty(character_name)}
-            end
-          end
-        )
-        |> Enum.with_index()
-        |> Enum.sort_by(fn {{_acronym, %{power: power}}, idx} -> {idx != 0, -power} end)
-        |> Enum.map(fn {value, _idx} -> value end)
+      |> Enum.map(fn
+        team when is_binary(team) -> @team_acronyms[team]
+        team when is_list(team) -> team
       end)
+      |> Enum.map(&SDK.Acronyms.expand_acronyms(&1))
+      |> Enum.map(&interpret_team(roster, &1))
       |> Enum.map(fn characters ->
         {leader_acronym, _} = hd(characters)
         characters = Enum.map(characters, &elem(&1, 1))
@@ -104,4 +95,35 @@ defmodule SWGOHCompanion.Hunters.Common do
     {teams, rest_of_roster}
   end
 
+  defp interpret_team(roster, team) do
+    team
+    |> Enum.map(
+      fn {acronym, character_name} ->
+        character = Enum.find(
+          roster,
+          &(String.downcase(character_name) == String.downcase(&1.name))
+        )
+        if character != nil do
+          {acronym, character}
+        else
+          {acronym, Character.empty(character_name)}
+        end
+      end
+    )
+    |> Enum.with_index()
+    |> Enum.sort_by(fn {{_acronym, %{power: power}}, idx} -> {idx != 0, -power} end)
+    |> Enum.map(fn {value, _idx} -> value end)
+  end
+
+  def fetch_roster(round_path) do
+    %{"roster" => roster} =
+      round_path
+      |> Path.join("roster.json")
+      |> File.read!()
+      |> Jason.decode!()
+
+    roster
+    |> Enum.map(&Morphix.atomorphiform!/1)
+    |> Enum.map(&Character.new/1)
+  end
 end

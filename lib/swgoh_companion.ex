@@ -3,11 +3,13 @@ defmodule SWGOHCompanion do
     SaveGacEnemyRoster,
     UpsertCharacterMods,
     UpsertGears,
-    UpsertGacEnemyRoster
+    UpsertGacEnemyTeams,
+    SaveGacEnemyTeams
   }
 
-  defdelegate save_gac_enemy_roster(ally_code, teams, out_path), to: SaveGacEnemyRoster
   defdelegate upsert_character_mods, to: UpsertCharacterMods
   defdelegate upsert_gears, to: UpsertGears
-  defdelegate upsert_gac_enemy_roster(ally_code, params), to: UpsertGacEnemyRoster
+  defdelegate save_gac_enemy_roster(ally_code, out_path), to: SaveGacEnemyRoster
+  defdelegate upsert_gac_enemy_teams(round_path, teams), to: UpsertGacEnemyTeams
+  defdelegate save_gac_enemy_teams(round_path, teams), to: SaveGacEnemyTeams
 end

@@ -1,4 +1,4 @@
-defmodule SWGOHCompanion.Hunters.UpsertGacEnemyRoster do
+defmodule SWGOHCompanion.Hunters.UpsertGacEnemyTeams do
   @sheet_name "GAC Enemy Roster"
   @starting_row 2
   @starting_column "A"
@@ -8,11 +8,11 @@ defmodule SWGOHCompanion.Hunters.UpsertGacEnemyRoster do
   alias SWGOHCompanion.Hunters.Common
   alias Common.Team
 
-  def upsert_gac_enemy_roster(0, _), do: raise "Round is required"
+  def upsert_gac_enemy_teams("", _), do: raise "Round is required"
 
-  def upsert_gac_enemy_roster(round_path, teams) do
+  def upsert_gac_enemy_teams(round_path, teams) do
     round_path
-    |> fetch_characters()
+    |> Common.fetch_roster()
     |> Common.form_teams_and_separate_rest_of_roster(teams)
     |> write_rows()
   end
@@ -71,16 +71,5 @@ defmodule SWGOHCompanion.Hunters.UpsertGacEnemyRoster do
     else
       type
     end
-  end
-
-  defp fetch_characters(round_path) do
-    %{"rest_of_roster" => roster} =
-      round_path
-      |> File.read!()
-      |> Jason.decode!()
-
-    roster
-    |> Enum.map(&Morphix.atomorphiform!/1)
-    |> Enum.map(&Character.new/1)
   end
 end
