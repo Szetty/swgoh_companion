@@ -49,6 +49,16 @@ defmodule SWGOHCompanion.SDK.Models do
     end
 
     def empty(name) do
+      name =
+        if first_character_lowercase?(name) do
+          name
+          |> String.split(" ")
+          |> Enum.map(&String.capitalize/1)
+          |> Enum.join(" ")
+        else
+          name
+        end
+
       %__MODULE__{
         id: nil,
         name: name,
@@ -61,6 +71,11 @@ defmodule SWGOHCompanion.SDK.Models do
         zeta_abilities: [],
         omicron_abilities: []
       }
+    end
+
+    defp first_character_lowercase?(name) do
+      first_character_string = String.slice(name, 0..0)
+      String.downcase(first_character_string) == first_character_string
     end
   end
 

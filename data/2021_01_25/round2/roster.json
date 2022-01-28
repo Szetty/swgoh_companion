@@ -1,0 +1,2714 @@
+{
+  "ally_code": "432253579",
+  "roster": [
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "GREEFKARGA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Greef Karga",
+      "omicron_abilities": [],
+      "power": 676,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 100.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 10
+      },
+      "id": "BARRISSOFFEE",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Barriss Offee",
+      "omicron_abilities": [],
+      "power": 13143,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 116.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "R2D2_LEGENDARY",
+      "mod_stats": null,
+      "mods": null,
+      "name": "R2-D2",
+      "omicron_abilities": [],
+      "power": 16735,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 183.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "CT210408",
+      "mod_stats": null,
+      "mods": null,
+      "name": "CT-21-0408 \"Echo\"",
+      "omicron_abilities": [],
+      "power": 16183,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 149.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "COLONELSTARCK",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Colonel Starck",
+      "omicron_abilities": [],
+      "power": 23542,
+      "relic_tier": 3,
+      "stats": {
+        "speed": 200.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Imperial Intelligence",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "POGGLETHELESSER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Poggle the Lesser",
+      "omicron_abilities": [],
+      "power": 17464,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 184.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "GENERALKENOBI",
+      "mod_stats": null,
+      "mods": null,
+      "name": "General Kenobi",
+      "omicron_abilities": [],
+      "power": 20422,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 157.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Soresu",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 3,
+        "level": 2
+      },
+      "id": "EWOKSCOUT",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Ewok Scout",
+      "omicron_abilities": [],
+      "power": 6792,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 115.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "PADMEAMIDALA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Padmé Amidala",
+      "omicron_abilities": [],
+      "power": 23053,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 202.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Unwavering Courage",
+          "order": null,
+          "type": "leader"
+        },
+        {
+          "name": "Always a Choice",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "NIGHTSISTERACOLYTE",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Nightsister Acolyte",
+      "omicron_abilities": [],
+      "power": 702,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 85.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "MOFFGIDEONS1",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Moff Gideon",
+      "omicron_abilities": [],
+      "power": 676,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 108.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "C3POCHEWBACCA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Threepio & Chewie",
+      "omicron_abilities": [],
+      "power": 676,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 105.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "LOBOT",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Lobot",
+      "omicron_abilities": [],
+      "power": 676,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 80.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "JAWA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Jawa",
+      "omicron_abilities": [],
+      "power": 451,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 80.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "ASAJVENTRESS",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Asajj Ventress",
+      "omicron_abilities": [],
+      "power": 17761,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 173.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "POE",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Poe Dameron",
+      "omicron_abilities": [],
+      "power": 9712,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 137.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "NIGHTSISTERZOMBIE",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Nightsister Zombie",
+      "omicron_abilities": [],
+      "power": 17652,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 153.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 9
+      },
+      "id": "STORMTROOPERHAN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Stormtrooper Han",
+      "omicron_abilities": [],
+      "power": 12078,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 121.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "HERASYNDULLAS3",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Hera Syndulla",
+      "omicron_abilities": [],
+      "power": 15930,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 164.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "GENERALHUX",
+      "mod_stats": null,
+      "mods": null,
+      "name": "General Hux",
+      "omicron_abilities": [],
+      "power": 1014,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 120.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 9
+      },
+      "id": "LUKESKYWALKER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Luke Skywalker (Farmboy)",
+      "omicron_abilities": [],
+      "power": 12078,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 114.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "VADER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Darth Vader",
+      "omicron_abilities": [],
+      "power": 35329,
+      "relic_tier": 7,
+      "stats": {
+        "speed": 264.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Inspiring Through Fear",
+          "order": null,
+          "type": "leader"
+        },
+        {
+          "name": "No Escape",
+          "order": 1,
+          "type": "unique"
+        },
+        {
+          "name": "Merciless Massacre",
+          "order": 3,
+          "type": "special"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "COUNTDOOKU",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Count Dooku",
+      "omicron_abilities": [],
+      "power": 28239,
+      "relic_tier": 6,
+      "stats": {
+        "speed": 223.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Flawless Riposte",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "MISSIONVAO",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Mission Vao",
+      "omicron_abilities": [],
+      "power": 18498,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 172.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Me and Big Z Forever",
+          "order": 2,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "ADMINISTRATORLANDO",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Lando Calrissian",
+      "omicron_abilities": [],
+      "power": 6577,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 104.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 10
+      },
+      "id": "CLONESERGEANTPHASEI",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Clone Sergeant - Phase I",
+      "omicron_abilities": [],
+      "power": 14115,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 119.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "FIRSTORDERTROOPER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "First Order Stormtrooper",
+      "omicron_abilities": [],
+      "power": 6301,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 111.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "STORMTROOPER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Stormtrooper",
+      "omicron_abilities": [],
+      "power": 6301,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 107.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 10
+      },
+      "id": "LUMINARAUNDULI",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Luminara Unduli",
+      "omicron_abilities": [],
+      "power": 14509,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 156.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "BOBAFETT",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Boba Fett",
+      "omicron_abilities": [],
+      "power": 21687,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 163.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Bounty Hunter's Resolve",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "DEATHTROOPER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Death Trooper",
+      "omicron_abilities": [],
+      "power": 6577,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 112.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "IG88",
+      "mod_stats": null,
+      "mods": null,
+      "name": "IG-88",
+      "omicron_abilities": [],
+      "power": 16806,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 136.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 10
+      },
+      "id": "DARTHNIHILUS",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Darth Nihilus",
+      "omicron_abilities": [],
+      "power": 15331,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 153.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "MONMOTHMA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Mon Mothma",
+      "omicron_abilities": [],
+      "power": 676,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 61.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "PLOKOON",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Plo Koon",
+      "omicron_abilities": [],
+      "power": 15997,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 160.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "DAKA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Old Daka",
+      "omicron_abilities": [],
+      "power": 23809,
+      "relic_tier": 3,
+      "stats": {
+        "speed": 204.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Serve Again",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "CARADUNE",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Cara Dune",
+      "omicron_abilities": [],
+      "power": 11349,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 133.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "RESISTANCETROOPER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Resistance Trooper",
+      "omicron_abilities": [],
+      "power": 6301,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 121.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "FINN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Finn",
+      "omicron_abilities": [],
+      "power": 6577,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 107.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "TUSKENRAIDER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Tusken Raider",
+      "omicron_abilities": [],
+      "power": 676,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 100.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "CASSIANANDOR",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Cassian Andor",
+      "omicron_abilities": [],
+      "power": 6577,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 128.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "BAZEMALBUS",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Baze Malbus",
+      "omicron_abilities": [],
+      "power": 6853,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 90.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "ZAALBAR",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Zaalbar",
+      "omicron_abilities": [],
+      "power": 18496,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 115.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Mission's Guardian",
+          "order": 2,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 4,
+        "level": 6
+      },
+      "id": "CLONEWARSCHEWBACCA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Clone Wars Chewbacca",
+      "omicron_abilities": [],
+      "power": 5362,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 98.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "COMMANDERLUKESKYWALKER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Commander Luke Skywalker",
+      "omicron_abilities": [],
+      "power": 17286,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 173.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 6
+      },
+      "id": "AAYLASECURA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Aayla Secura",
+      "omicron_abilities": [],
+      "power": 3030,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 103.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 10
+      },
+      "id": "HANSOLO",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Han Solo",
+      "omicron_abilities": [],
+      "power": 15006,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 145.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "CADBANE",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Cad Bane",
+      "omicron_abilities": [],
+      "power": 17131,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 117.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "GRANDMASTERYODA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Grand Master Yoda",
+      "omicron_abilities": [],
+      "power": 27867,
+      "relic_tier": 4,
+      "stats": {
+        "speed": 238.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Grand Master's Guidance",
+          "order": null,
+          "type": "leader"
+        },
+        {
+          "name": "Battle Meditation",
+          "order": 3,
+          "type": "special"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "DARTHREVAN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Darth Revan",
+      "omicron_abilities": [],
+      "power": 30481,
+      "relic_tier": 4,
+      "stats": {
+        "speed": 269.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Lord of the Sith",
+          "order": null,
+          "type": "leader"
+        },
+        {
+          "name": "Conqueror",
+          "order": 1,
+          "type": "unique"
+        },
+        {
+          "name": "Villain",
+          "order": 2,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 4,
+        "level": 4
+      },
+      "id": "GARSAXON",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Gar Saxon",
+      "omicron_abilities": [],
+      "power": 1708,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 107.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "MOTHERTALZIN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Mother Talzin",
+      "omicron_abilities": [],
+      "power": 27594,
+      "relic_tier": 4,
+      "stats": {
+        "speed": 174.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Plaguebearer",
+          "order": 1,
+          "type": "unique"
+        },
+        {
+          "name": "The Great Mother",
+          "order": null,
+          "type": "leader"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "JEDIKNIGHTREVAN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Jedi Knight Revan",
+      "omicron_abilities": [],
+      "power": 31734,
+      "relic_tier": 5,
+      "stats": {
+        "speed": 243.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Direct Focus",
+          "order": 2,
+          "type": "special"
+        },
+        {
+          "name": "Hero",
+          "order": 2,
+          "type": "unique"
+        },
+        {
+          "name": "General",
+          "order": null,
+          "type": "leader"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "NIGHTSISTERINITIATE",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Nightsister Initiate",
+      "omicron_abilities": [],
+      "power": 702,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 100.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 5,
+        "level": 11
+      },
+      "id": "SITHMARAUDER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Sith Marauder",
+      "omicron_abilities": [],
+      "power": 11398,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 142.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 2,
+        "level": 12
+      },
+      "id": "SUNFAC",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Sun Fac",
+      "omicron_abilities": [],
+      "power": 18024,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 132.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "KYLOREN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Kylo Ren",
+      "omicron_abilities": [],
+      "power": 11349,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 116.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "ROYALGUARD",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Royal Guard",
+      "omicron_abilities": [],
+      "power": 20398,
+      "relic_tier": 3,
+      "stats": {
+        "speed": 167.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "HOTHREBELSOLDIER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Hoth Rebel Soldier",
+      "omicron_abilities": [],
+      "power": 12576,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 103.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "KANANJARRUSS3",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Kanan Jarrus",
+      "omicron_abilities": [],
+      "power": 15975,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 102.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "SCARIFREBEL",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Scarif Rebel Pathfinder",
+      "omicron_abilities": [],
+      "power": 451,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 100.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "GRANDADMIRALTHRAWN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Grand Admiral Thrawn",
+      "omicron_abilities": [],
+      "power": 30249,
+      "relic_tier": 6,
+      "stats": {
+        "speed": 207.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Legendary Strategist",
+          "order": null,
+          "type": "leader"
+        },
+        {
+          "name": "Ebb and Flow",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "AHSOKATANO",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Ahsoka Tano",
+      "omicron_abilities": [],
+      "power": 18591,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 116.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Daring Padawan",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "BASTILASHANDARK",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Bastila Shan (Fallen)",
+      "omicron_abilities": [],
+      "power": 21480,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 221.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Sith Apprentice",
+          "order": 2,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "BOSSK",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Bossk",
+      "omicron_abilities": [],
+      "power": 28635,
+      "relic_tier": 4,
+      "stats": {
+        "speed": 195.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "On The Hunt",
+          "order": null,
+          "type": "leader"
+        },
+        {
+          "name": "Trandoshan Rage",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "CHIEFCHIRPA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Chief Chirpa",
+      "omicron_abilities": [],
+      "power": 2650,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 90.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "CT5555",
+      "mod_stats": null,
+      "mods": null,
+      "name": "CT-5555 \"Fives\"",
+      "omicron_abilities": [],
+      "power": 21640,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 185.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Tactical Awareness",
+          "order": 2,
+          "type": "unique"
+        },
+        {
+          "name": "Domino Squad",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "GEONOSIANBROODALPHA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Geonosian Brood Alpha",
+      "omicron_abilities": [],
+      "power": 28566,
+      "relic_tier": 4,
+      "stats": {
+        "speed": 245.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Geonosian Swarm",
+          "order": null,
+          "type": "leader"
+        },
+        {
+          "name": "Queen's Will",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "ANAKINKNIGHT",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Jedi Knight Anakin",
+      "omicron_abilities": [],
+      "power": 29347,
+      "relic_tier": 7,
+      "stats": {
+        "speed": 243.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Righteous Fury",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "MAUL",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Darth Maul",
+      "omicron_abilities": [],
+      "power": 24768,
+      "relic_tier": 4,
+      "stats": {
+        "speed": 227.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Dancing Shadows",
+          "order": null,
+          "type": "leader"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "NIGHTSISTERSPIRIT",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Nightsister Spirit",
+      "omicron_abilities": [],
+      "power": 17001,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 200.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "IDENVERSIOEMPIRE",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Iden Versio",
+      "omicron_abilities": [],
+      "power": 676,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 105.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 5,
+        "level": 6
+      },
+      "id": "HOTHLEIA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Rebel Officer Leia Organa",
+      "omicron_abilities": [],
+      "power": 12525,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 140.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 10
+      },
+      "id": "CHOPPERS3",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Chopper",
+      "omicron_abilities": [],
+      "power": 15055,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 185.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "HOTHREBELSCOUT",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Hoth Rebel Scout",
+      "omicron_abilities": [],
+      "power": 12103,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 183.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "NUTEGUNRAY",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Nute Gunray",
+      "omicron_abilities": [],
+      "power": 20691,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 199.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Viceroy's Reach",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "WEDGEANTILLES",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Wedge Antilles",
+      "omicron_abilities": [],
+      "power": 6577,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 110.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "VEERS",
+      "mod_stats": null,
+      "mods": null,
+      "name": "General Veers",
+      "omicron_abilities": [],
+      "power": 23589,
+      "relic_tier": 3,
+      "stats": {
+        "speed": 165.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Aggressive Tactician",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "CARTHONASI",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Carth Onasi",
+      "omicron_abilities": [],
+      "power": 18613,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 212.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Soldier of the Old Republic",
+          "order": null,
+          "type": "leader"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "JYNERSO",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Jyn Erso",
+      "omicron_abilities": [],
+      "power": 6853,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 151.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "TEEBO",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Teebo",
+      "omicron_abilities": [],
+      "power": 4635,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 100.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "GRANDMOFFTARKIN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Grand Moff Tarkin",
+      "omicron_abilities": [],
+      "power": 26613,
+      "relic_tier": 3,
+      "stats": {
+        "speed": 251.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Tighten the Grip",
+          "order": null,
+          "type": "leader"
+        },
+        {
+          "name": "Callous Conviction",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "LOGRAY",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Logray",
+      "omicron_abilities": [],
+      "power": 2650,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 100.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "URORRURRR",
+      "mod_stats": null,
+      "mods": null,
+      "name": "URoRRuR'R'R",
+      "omicron_abilities": [],
+      "power": 1014,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 100.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "SNOWTROOPER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Snowtrooper",
+      "omicron_abilities": [],
+      "power": 10774,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 92.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "SHORETROOPER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Shoretrooper",
+      "omicron_abilities": [],
+      "power": 6301,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 111.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "PRINCESSLEIA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Princess Leia",
+      "omicron_abilities": [],
+      "power": 16021,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 182.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "SAVAGEOPRESS",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Savage Opress",
+      "omicron_abilities": [],
+      "power": 1521,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 100.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 4,
+        "level": 11
+      },
+      "id": "DARTHMALAK",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Darth Malak",
+      "omicron_abilities": [],
+      "power": 20344,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 200.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Gnawing Terror",
+          "order": 1,
+          "type": "unique"
+        },
+        {
+          "name": "Jaws of Life",
+          "order": 2,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 10
+      },
+      "id": "PHASMA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Captain Phasma",
+      "omicron_abilities": [],
+      "power": 14239,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 134.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "DARTHTRAYA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Darth Traya",
+      "omicron_abilities": [],
+      "power": 4656,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 120.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "FIRSTORDEROFFICERMALE",
+      "mod_stats": null,
+      "mods": null,
+      "name": "First Order Officer",
+      "omicron_abilities": [],
+      "power": 10774,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 137.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 9
+      },
+      "id": "RESISTANCEPILOT",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Resistance Pilot",
+      "omicron_abilities": [],
+      "power": 11503,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 115.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "KYLEKATARN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Kyle Katarn",
+      "omicron_abilities": [],
+      "power": 451,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 105.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "CANDEROUSORDO",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Canderous Ordo",
+      "omicron_abilities": [],
+      "power": 18498,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 130.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "I Like a Challenge",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "SMUGGLERHAN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Veteran Smuggler Han Solo",
+      "omicron_abilities": [],
+      "power": 6577,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 139.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "THEMANDALORIAN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "The Mandalorian",
+      "omicron_abilities": [],
+      "power": 676,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 120.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "SMUGGLERCHEWBACCA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Veteran Smuggler Chewbacca",
+      "omicron_abilities": [],
+      "power": 6577,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 96.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 10
+      },
+      "id": "ZEBS3",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Garazeb \"Zeb\" Orrelios",
+      "omicron_abilities": [],
+      "power": 15030,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 120.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "DARKTROOPER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Dark Trooper",
+      "omicron_abilities": [],
+      "power": 301,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 130.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "B1BATTLEDROIDV2",
+      "mod_stats": null,
+      "mods": null,
+      "name": "B1 Battle Droid",
+      "omicron_abilities": [],
+      "power": 18589,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 204.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Droid Battalion",
+          "order": 2,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "BIGGSDARKLIGHTER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Biggs Darklighter",
+      "omicron_abilities": [],
+      "power": 9879,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 106.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "CC2224",
+      "mod_stats": null,
+      "mods": null,
+      "name": "CC-2224 \"Cody\"",
+      "omicron_abilities": [],
+      "power": 15975,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 144.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "K2SO",
+      "mod_stats": null,
+      "mods": null,
+      "name": "K-2SO",
+      "omicron_abilities": [],
+      "power": 11349,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 123.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "CT7567",
+      "mod_stats": null,
+      "mods": null,
+      "name": "CT-7567 \"Rex\"",
+      "omicron_abilities": [],
+      "power": 19444,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 194.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Captain of the 501st",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 7
+      },
+      "id": "IG86SENTINELDROID",
+      "mod_stats": null,
+      "mods": null,
+      "name": "IG-86 Sentinel Droid",
+      "omicron_abilities": [],
+      "power": 8668,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 114.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "MAGNAGUARD",
+      "mod_stats": null,
+      "mods": null,
+      "name": "IG-100 MagnaGuard",
+      "omicron_abilities": [],
+      "power": 1014,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 80.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "QUIGONJINN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Qui-Gon Jinn",
+      "omicron_abilities": [],
+      "power": 11349,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 137.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 7
+      },
+      "id": "T3_M4",
+      "mod_stats": null,
+      "mods": null,
+      "name": "T3-M4",
+      "omicron_abilities": [],
+      "power": 9193,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 126.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "BASTILASHAN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Bastila Shan",
+      "omicron_abilities": [],
+      "power": 21415,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 191.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Initiative",
+          "order": null,
+          "type": "leader"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 2,
+        "level": 12
+      },
+      "id": "GEONOSIANSPY",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Geonosian Spy",
+      "omicron_abilities": [],
+      "power": 17932,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 178.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "GRIEVOUS",
+      "mod_stats": null,
+      "mods": null,
+      "name": "General Grievous",
+      "omicron_abilities": [],
+      "power": 16665,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 126.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "CHIRRUTIMWE",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Chirrut Îmwe",
+      "omicron_abilities": [],
+      "power": 6853,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 141.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "TALIA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Talia",
+      "omicron_abilities": [],
+      "power": 17508,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 163.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "JUHANI",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Juhani",
+      "omicron_abilities": [],
+      "power": 18564,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 151.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Cathar Resilience",
+          "order": 1,
+          "type": "unique"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "JEDIKNIGHTCONSULAR",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Jedi Consular",
+      "omicron_abilities": [],
+      "power": 15177,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 144.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "SABINEWRENS3",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Sabine Wren",
+      "omicron_abilities": [],
+      "power": 6577,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 133.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "EWOKELDER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Ewok Elder",
+      "omicron_abilities": [],
+      "power": 4635,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 80.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "VISASMARR",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Visas Marr",
+      "omicron_abilities": [],
+      "power": 1014,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 75.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "FIRSTORDEREXECUTIONER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "First Order Executioner",
+      "omicron_abilities": [],
+      "power": 6301,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 99.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 10
+      },
+      "id": "KITFISTO",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Kit Fisto",
+      "omicron_abilities": [],
+      "power": 15028,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 134.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "JOLEEBINDO",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Jolee Bindo",
+      "omicron_abilities": [],
+      "power": 20632,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 155.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "That Looks Pretty Bad",
+          "order": 2,
+          "type": "special"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 1,
+        "level": 4
+      },
+      "id": "FIRSTORDERTIEPILOT",
+      "mod_stats": null,
+      "mods": null,
+      "name": "First Order TIE Pilot",
+      "omicron_abilities": [],
+      "power": 1537,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 104.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 9
+      },
+      "id": "ADMIRALACKBAR",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Admiral Ackbar",
+      "omicron_abilities": [],
+      "power": 13701,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 118.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "GREEDO",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Greedo",
+      "omicron_abilities": [],
+      "power": 17427,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 171.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "JANGOFETT",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Jango Fett",
+      "omicron_abilities": [],
+      "power": 14014,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 148.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "ARCTROOPER501ST",
+      "mod_stats": null,
+      "mods": null,
+      "name": "ARC Trooper",
+      "omicron_abilities": [],
+      "power": 15306,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 158.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 12
+      },
+      "id": "MACEWINDU",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Mace Windu",
+      "omicron_abilities": [],
+      "power": 17442,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 184.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 4
+      },
+      "id": "DARTHTALON",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Darth Talon",
+      "omicron_abilities": [],
+      "power": 5517,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 107.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "DATHCHA",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Dathcha",
+      "omicron_abilities": [],
+      "power": 1014,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 80.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "REY",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Rey (Scavenger)",
+      "omicron_abilities": [],
+      "power": 6577,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 140.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "EMPERORPALPATINE",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Emperor Palpatine",
+      "omicron_abilities": [],
+      "power": 32103,
+      "relic_tier": 7,
+      "stats": {
+        "speed": 206.0
+      },
+      "zeta_abilities": [
+        {
+          "name": "Crackling Doom",
+          "order": 1,
+          "type": "unique"
+        },
+        {
+          "name": "Emperor of the Galactic Empire",
+          "order": null,
+          "type": "leader"
+        }
+      ]
+    },
+    {
+      "gear": {
+        "count": 2,
+        "level": 9
+      },
+      "id": "HK47",
+      "mod_stats": null,
+      "mods": null,
+      "name": "HK-47",
+      "omicron_abilities": [],
+      "power": 15073,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 97.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "EZRABRIDGERS3",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Ezra Bridger",
+      "omicron_abilities": [],
+      "power": 16068,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 149.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 11
+      },
+      "id": "OLDBENKENOBI",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Obi-Wan Kenobi (Old Ben)",
+      "omicron_abilities": [],
+      "power": 16596,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 130.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 10
+      },
+      "id": "KYLORENUNMASKED",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Kylo Ren (Unmasked)",
+      "omicron_abilities": [],
+      "power": 15285,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 135.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 5
+      },
+      "id": "JEDIKNIGHTGUARDIAN",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Jedi Knight Guardian",
+      "omicron_abilities": [],
+      "power": 2424,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 83.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 8
+      },
+      "id": "TIEFIGHTERPILOT",
+      "mod_stats": null,
+      "mods": null,
+      "name": "TIE Fighter Pilot",
+      "omicron_abilities": [],
+      "power": 6301,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 146.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 1
+      },
+      "id": "SHAAKTI",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Shaak Ti",
+      "omicron_abilities": [],
+      "power": 1521,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 110.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 3,
+        "level": 11
+      },
+      "id": "DIRECTORKRENNIC",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Director Krennic",
+      "omicron_abilities": [],
+      "power": 13798,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 129.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "DARTHSIDIOUS",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Darth Sidious",
+      "omicron_abilities": [],
+      "power": 22912,
+      "relic_tier": 5,
+      "stats": {
+        "speed": 244.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 4,
+        "level": 11
+      },
+      "id": "ADMIRALPIETT",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Admiral Piett",
+      "omicron_abilities": [],
+      "power": 13996,
+      "relic_tier": 0,
+      "stats": {
+        "speed": 159.0
+      },
+      "zeta_abilities": []
+    },
+    {
+      "gear": {
+        "count": 0,
+        "level": 13
+      },
+      "id": "GEONOSIANSOLDIER",
+      "mod_stats": null,
+      "mods": null,
+      "name": "Geonosian Soldier",
+      "omicron_abilities": [],
+      "power": 20538,
+      "relic_tier": 3,
+      "stats": {
+        "speed": 212.0
+      },
+      "zeta_abilities": []
+    }
+  ]
+}
