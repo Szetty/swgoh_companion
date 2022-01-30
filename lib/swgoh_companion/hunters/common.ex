@@ -38,7 +38,8 @@ defmodule SWGOHCompanion.Hunters.Common do
 
   @team_acronyms %{
     "geos" => ["gba", "sf", "gso", "gsp", "ptl"],
-    "cls" => ["cls", "chewie", "t&c", "c3po", "han"]
+    "cls" => ["cls", "chewie", "t&c", "c3po", "han"],
+    "phx" => ["hs", "eb", "kj", "zeb", "chopper"]
   }
 
   def form_teams_and_separate_rest_of_roster(roster, :default) do
