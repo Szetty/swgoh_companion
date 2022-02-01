@@ -26,14 +26,20 @@ defmodule SWGOHCompanion.Hunters.Common do
     ["bossk", "boba", "jango", "fs", "dengar", "mando", "greef", "zw", "ig-88", "cb", "greedo"],
     ["padme", "jka", "at", "gk"],
     ["bando", "ig11", "kuiil"],
-    ["P & P", "wampa", "en", "wt", "gat", "hoda"],
+    ["P & P", "wampa", "en", "wt", "gat", "hoda", "bo", "armorer"],
     ["cc", "ee", "es", "teebo", "logray", "wicket", "paploo"],
     ["co", "candy", "zaal", "mv", "juhani"],
     ["dr", "bsf", "malak", "hk47", "set", "sm", "sa"],
     ["hs", "zeb", "kj", "eb", "sw", "chopper"],
     ["kru", "kr", "hux", "sitht", "fox", "fotp", "foo", "fos", "fosftp", "cp"],
     ["mt", "od", "nz", "ns", "av", "talia", "ni"],
-    ["gg", "ng", "b1", "b2", "ig100", "cd", "jango", "ddk"]
+    ["gg", "ng", "b1", "b2", "ig100", "cd", "jango", "ddk"],
+    ["traya", "sion", "dn"],
+    [
+      "mm", "cara", "bd", "hrsc", "wa", "srp", "bm", "hrso", "kk",
+      "lc", "k2so", "ca", "ci", "je", "bistan", "br", "pao"
+    ],
+    ["hunter", "wrecker", "tech", "echo", "omega"]
   ]
 
   @team_acronyms %{
@@ -110,6 +116,16 @@ defmodule SWGOHCompanion.Hunters.Common do
       @data_folder
       |> Path.join(out_path)
       |> Path.join("roster.json")
+
+    File.mkdir_p!(Path.dirname(out_path))
+    File.write!(out_path, data)
+  end
+
+  def write_teams!(out_path, data) do
+    out_path =
+      @data_folder
+      |> Path.join(out_path)
+      |> Path.join("teams.json")
 
     File.mkdir_p!(Path.dirname(out_path))
     File.write!(out_path, data)
