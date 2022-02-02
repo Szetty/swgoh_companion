@@ -1,0 +1,70 @@
+@startuml
+entity Account {
+  * ally_code
+  --
+  * name
+  inserted_at
+  updated_at
+}
+entity GACRoster {
+  * id <<generated>>
+  --
+  * ally_code <<FK>>
+  * computed_at_date
+  * characters
+  inserted_at
+}
+entity GACTeam {
+  * id <<generated>>
+  --
+  * gac_roster_id <<FK>>
+  * leader_acronym
+  * characters
+  * stats
+  inserted_at
+}
+entity GACRound {
+  * id <<week+round_nr>>
+  --
+  * week
+  * round_nr
+  * gac_nr
+  inserted_at
+}
+entity GACRoundRoster {
+  * id <<generated>>
+  --
+  * gac_round_id
+  * gac_roster_id
+  inserted_at
+}
+entity GACRoundTeam {
+  * id <<generated>>
+  --
+  * gac_round_id
+  * gac_team_id
+  inserted_at
+}
+entity GACBattle {
+  * id <<generated>>
+  --
+  * gac_round_id <<FK>>
+  * attacking_gac_team_id <<FK>>
+  * defending_gac_team_id <<FK>>
+  * banners
+  attacking_gac_team_status
+  defending_gac_team_status
+  inserted_at
+}
+Account "1" -- "*" GACRoster
+GACRoster "1" -- "*" GACTeam
+
+GACRoster "1" -- "?" GACRoundRoster
+GACRoundRoster "+" -- "1" GACRound
+GACTeam "1" -- "*" GACRoundTeam
+GACRoundTeam "+" -- "1" GACRound
+
+GACRound "1" -- "*" GACBattle
+GACTeam "1" -- "?" GACBattle: attacking
+GACTeam "1" -- "?" GACBattle: defending
+@enduml

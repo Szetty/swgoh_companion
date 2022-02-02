@@ -41,8 +41,8 @@ defmodule SWGOHCompanion.SDK.Hotutils do
          "mods" => mod_stats,
          "equippedMods" => mods,
          "gear" => %{
-            "level" => gear_level,
-            "count" => gear_count
+           "level" => gear_level,
+           "count" => gear_count
          }
        }) do
     %Character{

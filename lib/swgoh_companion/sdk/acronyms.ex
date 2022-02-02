@@ -1,5 +1,4 @@
 defmodule SWGOHCompanion.SDK.Acronyms do
-
   @acronyms %{
     "ah" => "Amilyn Holdo",
     "arct" => "ARC Trooper",
@@ -83,6 +82,8 @@ defmodule SWGOHCompanion.SDK.Acronyms do
     "jka" => "Jedi Knight Anakin",
     "jkl" => "Jedi Knight Luke Skywalker",
     "jkr" => "Jedi Knight Revan",
+    "jmk" => "Jedi Master Kenobi",
+    "jml" => "Jedi Master Luke Skywalker",
     "k2so" => "K-2SO",
     "kj" => "Kanan Jarrus",
     "kk" => "Kyle Katarn",
@@ -91,6 +92,7 @@ defmodule SWGOHCompanion.SDK.Acronyms do
     "l337" => "L3-37",
     "lc" => "Lando Calrissian",
     "lu" => "Luminara Unduli",
+    "lv" => "Lord Vader",
     "malak" => "Darth Malak",
     "mando" => "The Mandalorian",
     "mg" => "Moff Gideon",
@@ -115,10 +117,13 @@ defmodule SWGOHCompanion.SDK.Acronyms do
     "rg" => "Royal Guard",
     "rs" => "Rey (Scavenger)",
     "sa" => "Sith Assassin",
+    "see" => "Sith Eternal Emperor",
     "set" => "Sith Empire Trooper",
     "sf" => "Sun Fac",
     "shoret" => "Shoretrooper",
     "sion" => "Darth Sion",
+    "sitht" => "Sith Trooper",
+    "slkr" => "Supreme Leader Kylo Ren",
     "sm" => "Sith Marauder",
     "snowt" => "Snowtrooper",
     "so" => "Savage Opress",
@@ -137,7 +142,6 @@ defmodule SWGOHCompanion.SDK.Acronyms do
     "zeb" => "Garazeb \"Zeb\" Orrelios",
     "zw" => "Zam Wesell"
   }
-
 
   def expand_acronyms(characters) do
     characters

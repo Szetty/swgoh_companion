@@ -1,23 +1,37 @@
 defmodule SWGOHCompanion.SDK.Models do
   defmodule PlayerData do
     @derive Jason.Encoder
-    defstruct characters: []
+    defstruct [
+      :name,
+      :guild_name,
+      characters: []
+    ]
   end
 
   defmodule Character do
     alias SWGOHCompanion.SDK.Models.{Stats, Mod, Gear, Ability}
     @derive Jason.Encoder
     defstruct [
-      :id, # GENERALSKYWALKER
-      :name, # General Skywalker
-      :power, # 12345
-      :stats, # Stats
-      :mod_stats, # Stats
-      :mods, # [Mod]
-      :gear, # Gear
-      :relic_tier, # 5
-      :zeta_abilities, # [Ability]
-      :omicron_abilities # [Ability]
+      # GENERALSKYWALKER
+      :id,
+      # General Skywalker
+      :name,
+      # 12345
+      :power,
+      # Stats
+      :stats,
+      # Stats
+      :mod_stats,
+      # [Mod]
+      :mods,
+      # Gear
+      :gear,
+      # 5
+      :relic_tier,
+      # [Ability]
+      :zeta_abilities,
+      # [Ability]
+      :omicron_abilities
     ]
 
     def new(map) do
@@ -27,8 +41,11 @@ defmodule SWGOHCompanion.SDK.Models do
         r -> r
       end)
       |> then(fn
-        %{mod_stats: mod_stats} = s when is_map(mod_stats) -> %{s | mod_stats: Stats.new(mod_stats)}
-        r -> r
+        %{mod_stats: mod_stats} = s when is_map(mod_stats) ->
+          %{s | mod_stats: Stats.new(mod_stats)}
+
+        r ->
+          r
       end)
       |> then(fn
         %{mods: mods} = s when is_list(mods) -> %{s | mods: Enum.map(mods, &Mod.new/1)}
@@ -39,12 +56,18 @@ defmodule SWGOHCompanion.SDK.Models do
         r -> r
       end)
       |> then(fn
-        %{zeta_abilities: zeta_abilities} = s when is_list(zeta_abilities) -> %{s | zeta_abilities: Enum.map(zeta_abilities, &Ability.new/1)}
-        r -> r
+        %{zeta_abilities: zeta_abilities} = s when is_list(zeta_abilities) ->
+          %{s | zeta_abilities: Enum.map(zeta_abilities, &Ability.new/1)}
+
+        r ->
+          r
       end)
       |> then(fn
-        %{omicron_abilities: omicron_abilities} = s when is_list(omicron_abilities) -> %{s | omicron_abilities: Enum.map(omicron_abilities, &Ability.new/1)}
-        r -> r
+        %{omicron_abilities: omicron_abilities} = s when is_list(omicron_abilities) ->
+          %{s | omicron_abilities: Enum.map(omicron_abilities, &Ability.new/1)}
+
+        r ->
+          r
       end)
     end
 
@@ -129,9 +152,12 @@ defmodule SWGOHCompanion.SDK.Models do
   defmodule Ability do
     @derive Jason.Encoder
     defstruct [
-      :name, # Hero with no Fear
-      :type, # unique
-      :order # 2
+      # Hero with no Fear
+      :name,
+      # unique
+      :type,
+      # 2
+      :order
     ]
 
     def new(map) do

@@ -2,7 +2,7 @@ defmodule SWGOHCompanion.Hunters.SaveGacEnemyTeams do
   use SWGOHCompanion.SDK
   alias SWGOHCompanion.Hunters.Common
 
-  def save_gac_enemy_teams("", _), do: raise "Round is required"
+  def save_gac_enemy_teams("", _), do: raise("Round is required")
 
   def save_gac_enemy_teams(round_path, teams) do
     round_path
@@ -19,5 +19,4 @@ defmodule SWGOHCompanion.Hunters.SaveGacEnemyTeams do
     |> Jason.encode!(pretty: true)
     |> then(&Common.write_teams!(round_path, &1))
   end
-
 end

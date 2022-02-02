@@ -1,6 +1,8 @@
 defmodule SWGOHCompanion.Hunters.Common do
   alias SWGOHCompanion.SDK
   alias SWGOHCompanion.SDK.Models.Character
+  alias SWGOHCompanion.Repo
+  import Ecto.Query
 
   @data_folder "data"
 
@@ -36,10 +38,26 @@ defmodule SWGOHCompanion.Hunters.Common do
     ["gg", "ng", "b1", "b2", "ig100", "cd", "jango", "ddk"],
     ["traya", "sion", "dn"],
     [
-      "mm", "cara", "bd", "hrsc", "wa", "srp", "bm", "hrso", "kk",
-      "lc", "k2so", "ca", "ci", "je", "bistan", "br", "pao"
+      "mm",
+      "cara",
+      "bd",
+      "hrsc",
+      "wa",
+      "srp",
+      "bm",
+      "hrso",
+      "kk",
+      "lc",
+      "k2so",
+      "ca",
+      "ci",
+      "je",
+      "bistan",
+      "br",
+      "pao"
     ],
-    ["hunter", "wrecker", "tech", "echo", "omega"]
+    ["hunter", "wrecker", "tech", "echo", "omega"],
+    ["GLs", "slkr", "jml", "rey", "see", "lv", "jmk"]
   ]
 
   @team_acronyms %{
@@ -80,31 +98,37 @@ defmodule SWGOHCompanion.Hunters.Common do
 
   defp interpret_team(roster, team) do
     team
-    |> Enum.map(
-      fn {acronym, character_name} ->
-        character = Enum.find(
+    |> Enum.map(fn {acronym, character_name} ->
+      character =
+        Enum.find(
           roster,
           &(String.downcase(character_name) == String.downcase(&1.name))
         )
-        if character != nil do
-          {acronym, character}
-        else
-          {acronym, Character.empty(character_name)}
-        end
+
+      if character != nil do
+        {acronym, character}
+      else
+        {acronym, Character.empty(character_name)}
       end
-    )
+    end)
     |> Enum.with_index()
     |> Enum.sort_by(fn {{_acronym, %{power: power}}, idx} -> {idx != 0, -power} end)
     |> Enum.map(fn {value, _idx} -> value end)
   end
 
-  def fetch_roster(round_path) do
-    %{"roster" => roster} =
-      @data_folder
-      |> Path.join(round_path)
-      |> Path.join("roster.json")
-      |> File.read!()
-      |> Jason.decode!()
+  def fetch_roster(week, round_nr) do
+    roster =
+      from(
+        round in Repo.GACRound,
+        where: round.week == ^week and round.round == ^round_nr,
+        join: rr in Repo.GACRoundRoster,
+        on: round.id == rr.gac_round_id,
+        join: roster in Repo.GACRoster,
+        on: rr.gac_roster_id == roster.id,
+        where: roster.ally_code != ^SDK.current_user_ally_code(),
+        select: roster.characters
+      )
+      |> Repo.one!()
 
     roster
     |> Enum.map(&Morphix.atomorphiform!/1)
@@ -134,7 +158,7 @@ defmodule SWGOHCompanion.Hunters.Common do
   defp build_team(characters) do
     {leader_acronym, _} = hd(characters)
     characters = Enum.map(characters, &elem(&1, 1))
-    characters_with_power = Enum.filter(characters, & &1.power > 5000)
+    characters_with_power = Enum.filter(characters, &(&1.power > 5000))
 
     if characters_with_power != [] do
       power_avg =
@@ -143,14 +167,17 @@ defmodule SWGOHCompanion.Hunters.Common do
         |> Enum.sum()
         |> Kernel./(Enum.count(characters_with_power))
         |> Float.round()
+
       max_speed =
         characters
         |> Enum.map(& &1.stats.speed)
         |> Enum.max()
+
       zeta_sum =
         characters
         |> Enum.map(&Enum.count(&1.zeta_abilities))
         |> Enum.sum()
+
       omicron_sum =
         characters
         |> Enum.map(&Enum.count(&1.omicron_abilities))

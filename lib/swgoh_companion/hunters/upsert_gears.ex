@@ -17,12 +17,12 @@ defmodule SWGOHCompanion.Hunters.UpsertGears do
     gear_by_character_id =
       characters
       |> Enum.map(fn %Character{
-        id: id,
-        gear: %Gear{
-          level: level,
-          count: count
-        }
-      } ->
+                       id: id,
+                       gear: %Gear{
+                         level: level,
+                         count: count
+                       }
+                     } ->
         {id, %{gear: level * 10 + count}}
       end)
       |> Map.new()
@@ -32,6 +32,7 @@ defmodule SWGOHCompanion.Hunters.UpsertGears do
       case Map.get(gear_by_character_id, id) do
         %{gear: gear} ->
           {name, gear}
+
         nil ->
           {name, 0}
       end

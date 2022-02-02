@@ -27,12 +27,12 @@ defmodule Mix.Tasks.Hunter.Gen do
 
   set -xe
 
-  mix run -e "SWGOHCompanion.upsert_%%NAME_SNAKE_CASE%%"
+  mix run -e "SWGOHCompanion.%%NAME_SNAKE_CASE%%"
   """
 
   @hunter_template ~s"""
-  defmodule SWGOHCompanion.Hunters.Upsert%%NAME_CAMEL_CASE%% do%%CONSTANTS%%%%IMPORTS%%
-    def upsert_%%NAME_SNAKE_CASE%% do
+  defmodule SWGOHCompanion.Hunters.%%NAME_CAMEL_CASE%% do%%CONSTANTS%%%%IMPORTS%%
+    def %%NAME_SNAKE_CASE%% do
       %%FUNCTION_BODY%%
     end
     %%OTHER_FUNCTIONS%%
@@ -66,7 +66,7 @@ defmodule Mix.Tasks.Hunter.Gen do
   """
 
   @defdelegate_template ~s"""
-  defdelegate upsert_%%NAME_SNAKE_CASE%%, to: Upsert%%NAME_CAMEL_CASE%%
+  defdelegate %%NAME_SNAKE_CASE%%, to: %%NAME_CAMEL_CASE%%
   """
 
   @impl Mix.Task
@@ -145,20 +145,20 @@ defmodule Mix.Tasks.Hunter.Gen do
   end
 
   defp create_files_and_print_info(%Context{
-    name: name,
-    name_camel_case: name_camel_case,
-    shell_template: shell_template,
-    hunter_template: hunter_template,
-    defdelegate_template: defdelegate_template
-  }) do
-    shell_path = "bin/upsert_#{name}.sh"
+         name: name,
+         name_camel_case: name_camel_case,
+         shell_template: shell_template,
+         hunter_template: hunter_template,
+         defdelegate_template: defdelegate_template
+       }) do
+    shell_path = "bin/#{name}.sh"
     create_file!(shell_path, shell_template)
-    create_file!("lib/swgoh_companion/hunters/upsert_#{name}.ex", hunter_template)
+    create_file!("lib/swgoh_companion/hunters/#{name}.ex", hunter_template)
 
     Mix.shell().info(~s"""
 
     To finish configuring the new template, you will need to
-    1. Alias the new module (SWGOHCompanion.Hunters.Upsert#{name_camel_case})
+    1. Alias the new module (SWGOHCompanion.Hunters.#{name_camel_case})
     2. Add the following line in the main file (lib/swgoh_companion.ex):
 
       #{defdelegate_template}

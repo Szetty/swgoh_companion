@@ -26,3 +26,6 @@ swgoh_helpers-*.tar
 /tmp/
 
 service-account.json
+pgdata
+out
+.elixir_ls

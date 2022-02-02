@@ -8,11 +8,8 @@ defmodule SWGOHCompanion.Hunters.UpsertGacEnemyTeams do
   alias SWGOHCompanion.Hunters.Common
   alias Common.Team
 
-  def upsert_gac_enemy_teams("", _), do: raise "Round is required"
-
-  def upsert_gac_enemy_teams(round_path, teams) do
-    round_path
-    |> Common.fetch_roster()
+  def upsert_gac_enemy_teams(week, round_nr, teams) do
+    Common.fetch_roster(week, round_nr)
     |> Common.form_teams_and_separate_rest_of_roster(teams)
     |> write_rows()
   end
@@ -21,18 +18,18 @@ defmodule SWGOHCompanion.Hunters.UpsertGacEnemyTeams do
     teams =
       teams
       |> Enum.map(fn %Team{
-        name: name,
-        power_avg: power_avg,
-        max_speed: max_speed,
-        zeta_sum: zeta_sum,
-        omicron_sum: omicron_sum,
-        characters: characters
-      } ->
+                       name: name,
+                       power_avg: power_avg,
+                       max_speed: max_speed,
+                       zeta_sum: zeta_sum,
+                       omicron_sum: omicron_sum,
+                       characters: characters
+                     } ->
         [[name, power_avg, "", "", max_speed, zeta_sum, "", omicron_sum, ""]] ++
-        (Enum.map(characters, &stringify_character/1)) ++
-        [[]]
+          Enum.map(characters, &stringify_character/1) ++
+          [[]]
       end)
-      |> Enum.concat
+      |> Enum.concat()
 
     rest_of_roster =
       rest_of_roster
@@ -42,26 +39,34 @@ defmodule SWGOHCompanion.Hunters.UpsertGacEnemyTeams do
   end
 
   defp stringify_character(%Character{
-    name: name,
-    power: power,
-    stats: %Stats{
-      speed: speed
-    },
-    gear: %Gear{
-      level: level,
-      count: count
-    },
-    relic_tier: relic_tier,
-    zeta_abilities: zeta_abilities,
-    omicron_abilities: omicron_abilities
-  }) do
+         name: name,
+         power: power,
+         stats: %Stats{
+           speed: speed
+         },
+         gear: %Gear{
+           level: level,
+           count: count
+         },
+         relic_tier: relic_tier,
+         zeta_abilities: zeta_abilities,
+         omicron_abilities: omicron_abilities
+       }) do
     zeta_count = Enum.count(zeta_abilities)
     zeta_abilities = Enum.map(zeta_abilities, &stringify_ability/1) |> Enum.join(",")
     omicron_count = Enum.count(omicron_abilities)
-    omicron_abilities = Enum.map(omicron_abilities, &stringify_ability/1)  |> Enum.join(",")
+    omicron_abilities = Enum.map(omicron_abilities, &stringify_ability/1) |> Enum.join(",")
+
     [
-      name, power, "#{level}-#{count}", relic_tier, speed,
-      zeta_count, zeta_abilities, omicron_count, omicron_abilities
+      name,
+      power,
+      "#{level}-#{count}",
+      relic_tier,
+      speed,
+      zeta_count,
+      zeta_abilities,
+      omicron_count,
+      omicron_abilities
     ]
   end
 

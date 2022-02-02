@@ -17,8 +17,17 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
     HTTP.get_json(@characters_url)
   end
 
+  def get_player(player \\ @player) do
+    IO.puts("Fetching player for #{player}")
+
+    @player_url
+    |> Path.join(player)
+    |> HTTP.get_json()
+    |> decode_player_response()
+  end
+
   def get_player_roster(player \\ @player) do
-    IO.puts("Fetching roster")
+    IO.puts("Fetching roster for #{player}")
 
     @player_url
     |> Path.join(player)
@@ -27,10 +36,23 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
     |> decode_player_roster_response()
   end
 
-  defp decode_player_roster_response(characters) do
+  defp decode_player_response(%{
+         "data" => %{
+           "name" => player_name,
+           "guild_name" => guild_name
+         },
+         "units" => units
+       }) do
+    units
+    |> decode_player_roster_response()
+    |> Map.put(:name, player_name)
+    |> Map.put(:guild_name, guild_name)
+  end
+
+  defp decode_player_roster_response(units) do
     characters =
-      characters
-      |> Enum.filter(&get_in(&1, ["data", "combat_type"]) == 1)
+      units
+      |> Enum.filter(&(get_in(&1, ["data", "combat_type"]) == 1))
       |> Enum.map(&decode_character/1)
 
     %PlayerData{
@@ -39,24 +61,25 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
   end
 
   defp decode_character(%{
-    "data" => %{
-      "base_id" => id,
-      "name" => name,
-      "power" => power,
-      "stats" => %{
-        @speed_stat => speed
-      },
-      "gear" => equipped_gear,
-      "gear_level" => gear_level,
-      "relic_tier" => relic_tier,
-      "ability_data" => ability_data,
-      "zeta_abilities" => zeta_abilities,
-      "omicron_abilities" => omicron_abilities,
-    }
-  }) do
+         "data" => %{
+           "base_id" => id,
+           "name" => name,
+           "power" => power,
+           "stats" => %{
+             @speed_stat => speed
+           },
+           "gear" => equipped_gear,
+           "gear_level" => gear_level,
+           "relic_tier" => relic_tier,
+           "ability_data" => ability_data,
+           "zeta_abilities" => zeta_abilities,
+           "omicron_abilities" => omicron_abilities
+         }
+       }) do
     gear_count = Enum.count(equipped_gear, &Map.get(&1, "is_obtained"))
     zeta_abilities = Enum.map(zeta_abilities, &decode_ability(ability_data, &1))
     omicron_abilities = Enum.map(omicron_abilities, &decode_ability(ability_data, &1))
+
     %Character{
       id: id,
       name: name,
@@ -79,8 +102,10 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
   defp decode_ability(ability_data, ability_id) do
     %{
       "name" => name
-    } = Enum.find(ability_data, &Map.get(&1, "id") == ability_id)
+    } = Enum.find(ability_data, &(Map.get(&1, "id") == ability_id))
+
     scan_result = Regex.scan(~r/^(.+)skill_.+(\d{2})$/, ability_id)
+
     {type, order} =
       if scan_result != [] do
         [[_, type, order]] = scan_result

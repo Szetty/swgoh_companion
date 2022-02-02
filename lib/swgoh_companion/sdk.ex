@@ -22,7 +22,10 @@ defmodule SWGOHCompanion.SDK do
     [common_quote] ++ spreadsheet_quotes
   end
 
+  def current_user_ally_code, do: "473362279"
+
   defdelegate get_all_characters, to: __MODULE__.SWGOHGG
+  defdelegate get_player(ally_code), to: __MODULE__.SWGOHGG
   defdelegate get_player_roster, to: __MODULE__.SWGOHGG
   defdelegate get_player_roster(ally_code), to: __MODULE__.SWGOHGG
   defdelegate get_most_popular_mods, to: __MODULE__.SWGOHGG
