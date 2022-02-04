@@ -14,6 +14,8 @@ defmodule SWGOHCompanion.Repo.GACRoster do
     field :characters, {:array, :map}, null: false
     field :stats, :map, null: false, default: %{}
 
+    has_many :gac_teams, Repo.GACTeam
+
     timestamps(updated_at: false)
   end
 

@@ -15,5 +15,5 @@ defmodule SWGOHCompanion do
   defdelegate prepare_round(week, round_nr, ally_code), to: PrepareRound
   defdelegate save_gac_enemy_roster(ally_code, out_path), to: SaveGacEnemyRoster
   defdelegate upsert_gac_enemy_teams(week, round_nr, teams), to: UpsertGacEnemyTeams
-  defdelegate save_gac_enemy_teams(round_path, teams), to: SaveGacEnemyTeams
+  defdelegate save_gac_enemy_teams(week, round_nr, teams), to: SaveGacEnemyTeams
 end

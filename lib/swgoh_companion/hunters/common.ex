@@ -10,6 +10,7 @@ defmodule SWGOHCompanion.Hunters.Common do
     @derive Jason.Encoder
     defstruct [
       :name,
+      :leader_acronym,
       :power_avg,
       :max_speed,
       :zeta_sum,
@@ -185,6 +186,7 @@ defmodule SWGOHCompanion.Hunters.Common do
 
       %Team{
         name: "Team #{String.upcase(leader_acronym)}",
+        leader_acronym: leader_acronym,
         power_avg: power_avg,
         max_speed: max_speed,
         zeta_sum: zeta_sum,

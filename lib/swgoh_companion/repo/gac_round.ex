@@ -13,6 +13,7 @@ defmodule SWGOHCompanion.Repo.GACRound do
     field :gac_nr, :integer, null: false
 
     has_many :gac_round_rosters, Repo.GACRoundRoster, references: :id
+    has_many :gac_rosters, through: [:gac_round_rosters, :gac_roster]
 
     timestamps(updated_at: false)
   end
