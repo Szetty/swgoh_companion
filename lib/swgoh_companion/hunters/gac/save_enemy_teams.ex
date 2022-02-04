@@ -1,4 +1,4 @@
-defmodule SWGOHCompanion.Hunters.SaveGacEnemyTeams do
+defmodule SWGOHCompanion.Hunters.GAC.SaveEnemyTeams do
   use SWGOHCompanion.SDK
   alias SWGOHCompanion.Hunters.Common
   alias Common.Team
@@ -6,7 +6,7 @@ defmodule SWGOHCompanion.Hunters.SaveGacEnemyTeams do
   alias Ecto.Multi
   import Ecto.Query
 
-  def save_gac_enemy_teams(week, round_nr, teams) do
+  def save_enemy_teams(week, round_nr, teams) do
     Common.fetch_roster(week, round_nr)
     |> Common.form_teams_and_separate_rest_of_roster(teams)
     |> write_to_db(week, round_nr)
@@ -23,11 +23,12 @@ defmodule SWGOHCompanion.Hunters.SaveGacEnemyTeams do
 
     [roster] =
       round.gac_rosters
-      |> Enum.reject(& &1.ally_code != SDK.current_user_ally_code())
+      |> Enum.reject(&(&1.ally_code != SDK.current_user_ally_code()))
 
     teams
     |> Enum.reduce(Multi.new(), fn %Team{} = team, multi ->
       insert_team_operation_name = :"insert_gac_team_#{team.name}"
+
       attrs = %{
         leader_acronym: team.leader_acronym,
         characters: team.characters,

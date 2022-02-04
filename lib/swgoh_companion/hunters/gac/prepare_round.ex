@@ -1,4 +1,4 @@
-defmodule SWGOHCompanion.Hunters.PrepareRound do
+defmodule SWGOHCompanion.Hunters.GAC.PrepareRound do
   use SWGOHCompanion.SDK
   alias SWGOHCompanion.Repo
   import Ecto.Query

@@ -1,4 +1,4 @@
-defmodule SWGOHCompanion.Hunters.UpsertGacEnemyTeams do
+defmodule SWGOHCompanion.Hunters.GAC.UpsertEnemyTeams do
   @sheet_name "GAC Enemy Roster"
   @starting_row 2
   @starting_column "A"
@@ -8,7 +8,7 @@ defmodule SWGOHCompanion.Hunters.UpsertGacEnemyTeams do
   alias SWGOHCompanion.Hunters.Common
   alias Common.Team
 
-  def upsert_gac_enemy_teams(week, round_nr, teams) do
+  def upsert_enemy_teams(week, round_nr, teams) do
     Common.fetch_roster(week, round_nr)
     |> Common.form_teams_and_separate_rest_of_roster(teams)
     |> write_rows()

@@ -1,4 +1,4 @@
-defmodule SWGOHCompanion.Hunters.PrepareGacWeek do
+defmodule SWGOHCompanion.Hunters.GAC.PrepareWeek do
   use SWGOHCompanion.SDK
   alias SWGOHCompanion.Repo
   alias SDK.Models.PlayerData
@@ -6,7 +6,7 @@ defmodule SWGOHCompanion.Hunters.PrepareGacWeek do
 
   @rounds 1..3
 
-  def prepare_gac_week(week, gac_nr, week_nr, ally_codes) do
+  def prepare_week(week, gac_nr, week_nr, ally_codes) do
     {:ok, _} =
       Multi.new()
       |> fetch_and_save_players(ally_codes)

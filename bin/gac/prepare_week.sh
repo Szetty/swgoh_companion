@@ -9,4 +9,4 @@ ALLY_CODES=$4
 
 # $('div.ag-pinned-left-cols-container > div[comp-id] a').map((_, a) => a.getAttribute('href').replace('/p/', ''))
 
-mix run -e "SWGOHCompanion.prepare_gac_week(\"$WEEK\", $GAC_NR, $WEEK_NR, $ALLY_CODES)"
+mix run -e "SWGOHCompanion.GAC.prepare_week(\"$WEEK\", $GAC_NR, $WEEK_NR, $ALLY_CODES)"

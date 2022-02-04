@@ -21,24 +21,36 @@ defmodule SWGOHCompanion.Hunters.Common do
 
   @default_teams [
     ["gas", "st", "rex", "fives", "ctecho", "arct"],
-    ["gba", "sf", "gso", "gsp", "ptl"],
+    "Geos",
     ["ep", "mj", "dv"],
     ["jkr", "gmy", "bs", "jb", "jkl", "gk"],
-    ["gv", "ap", "darkt", "ranget", "mg", "deatht", "cs", "snowt", "shoret"],
-    ["cls", "chewie", "t&c", "c3po", "han"],
-    ["bossk", "boba", "jango", "fs", "dengar", "mando", "greef", "zw", "ig-88", "cb", "greedo"],
+    "Imperial Troopers",
+    "CLS",
+    "Bounty Hunters",
     ["padme", "jka", "at", "gk"],
     ["bando", "ig11", "kuiil"],
-    ["P & P", "wampa", "en", "wt", "gat", "hoda", "bo", "armorer"],
-    ["cc", "ee", "es", "teebo", "logray", "wicket", "paploo"],
+    "Plug & Play",
+    "Ewoks",
     ["co", "candy", "zaal", "mv", "juhani"],
-    ["dr", "bsf", "malak", "hk47", "set", "sm", "sa"],
-    ["hs", "zeb", "kj", "eb", "sw", "chopper"],
-    ["kru", "kr", "hux", "sitht", "fox", "fotp", "foo", "fos", "fosftp", "cp"],
-    ["mt", "od", "nz", "ns", "av", "talia", "ni"],
-    ["gg", "ng", "b1", "b2", "ig100", "cd", "jango", "ddk"],
-    ["traya", "sion", "dn"],
-    [
+    "Sith Empire",
+    "Phoenix",
+    "First Order",
+    "Nightsisters",
+    "Separatists",
+    "Sith Trio",
+    "MM + Rebel Fighters",
+    "Bad Batch",
+    "Galactic Legends",
+    "Resistance",
+    "Sith"
+  ]
+
+  @team_acronyms %{
+    "geos" => ["gba", "sf", "gso", "gsp", "ptl"],
+    "cls" => ["cls", "chewie", "t&c", "c3po", "han"],
+    "phoenix" => ["hs", "eb", "kj", "zeb", "chopper", "sw"],
+    "phx" => ["hs", "eb", "kj", "zeb", "chopper"],
+    "mm + rebel fighters" => [
       "mm",
       "cara",
       "bd",
@@ -57,14 +69,19 @@ defmodule SWGOHCompanion.Hunters.Common do
       "br",
       "pao"
     ],
-    ["hunter", "wrecker", "tech", "echo", "omega"],
-    ["GLs", "slkr", "jml", "rey", "see", "lv", "jmk"]
-  ]
-
-  @team_acronyms %{
-    "geos" => ["gba", "sf", "gso", "gsp", "ptl"],
-    "cls" => ["cls", "chewie", "t&c", "c3po", "han"],
-    "phx" => ["hs", "eb", "kj", "zeb", "chopper"]
+    "nightsisters" => ["mt", "od", "nz", "ns", "av", "talia", "ni"],
+    "bad batch" => ["hunter", "wrecker", "tech", "echo", "omega"],
+    "first order" => ["kru", "kr", "hux", "sitht", "fox", "fotp", "foo", "fos", "fosftp", "cp"],
+    "sith trio" => ["traya", "sion", "dn"],
+    "separatists" => ["gg", "ng", "b1", "b2", "ig100", "cd", "jango", "ddk"],
+    "sith empire" => ["dr", "bsf", "malak", "hk47", "set", "sm", "sa"],
+    "bounty hunters" => ["bossk", "boba", "jango", "fs", "dengar", "mando", "greef", "zw", "ig-88", "cb", "greedo"],
+    "plug & play" => ["wampa", "en", "wt", "gat", "hoda", "bo", "armorer", "c3po", "r2d2"],
+    "imperial troopers" => ["gv", "ap", "darkt", "ranget", "mg", "deatht", "cs", "snowt", "shoret"],
+    "ewoks" => ["cc", "ee", "es", "teebo", "logray", "wicket", "paploo"],
+    "galactic legends" => ["slkr", "jml", "rey", "see", "lv", "jmk"],
+    "resistance" => ["jtr", "vshs", "vsc", "finn", "rs", "pd", "rp", "bb8", "rt", "rhf", "rhp", "ah", "rose"],
+    "sith" => ["dv", "ep", "traya", "sion", "dn", "cd", "ds", "dm", "bsf", "dt", "set", "sm", "so", "sa", "dm", "dr"]
   }
 
   def form_teams_and_separate_rest_of_roster(roster, :default) do
@@ -75,11 +92,14 @@ defmodule SWGOHCompanion.Hunters.Common do
     teams =
       teams
       |> Enum.map(fn
-        team when is_binary(team) -> @team_acronyms[team]
+        team when is_binary(team) -> {team, @team_acronyms[String.downcase(team)]}
         team when is_list(team) -> team
       end)
-      |> Enum.map(&SDK.Acronyms.expand_acronyms(&1))
-      |> Enum.map(&interpret_team(roster, &1))
+      |> Enum.map(fn
+        {name, team} when is_list(team) -> {name, SDK.Acronyms.expand_acronyms(team)}
+        team when is_list(team) -> {nil, SDK.Acronyms.expand_acronyms(team)}
+      end)
+      |> Enum.map(fn {name, team} -> {name, interpret_team(roster, team)} end)
       |> Enum.map(&build_team/1)
       |> Enum.sort_by(&(-&1.power_avg))
 
@@ -156,8 +176,16 @@ defmodule SWGOHCompanion.Hunters.Common do
     File.write!(out_path, data)
   end
 
-  defp build_team(characters) do
+  defp build_team({name, characters}) do
     {leader_acronym, _} = hd(characters)
+
+    name =
+      if name != nil do
+        name
+      else
+        "Team #{String.upcase(leader_acronym)}"
+      end
+
     characters = Enum.map(characters, &elem(&1, 1))
     characters_with_power = Enum.filter(characters, &(&1.power > 5000))
 
@@ -185,7 +213,7 @@ defmodule SWGOHCompanion.Hunters.Common do
         |> Enum.sum()
 
       %Team{
-        name: "Team #{String.upcase(leader_acronym)}",
+        name: name,
         leader_acronym: leader_acronym,
         power_avg: power_avg,
         max_speed: max_speed,
@@ -195,7 +223,8 @@ defmodule SWGOHCompanion.Hunters.Common do
       }
     else
       %Team{
-        name: "Team #{String.upcase(leader_acronym)}",
+        name: name,
+        leader_acronym: leader_acronym,
         power_avg: 0,
         max_speed: 0,
         zeta_sum: 0,
