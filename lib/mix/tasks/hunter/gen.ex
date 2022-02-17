@@ -158,7 +158,7 @@ defmodule Mix.Tasks.Hunter.Gen do
     Mix.shell().info(~s"""
 
     To finish configuring the new template, you will need to
-    1. Alias the new module (SWGOHCompanion.Hunters.#{name_camel_case})
+    1. Alias the new module (SWGOHCompanion.Hunters.#{name_camel_case}) in the main file (lib/swgoh_companion.ex).
     2. Add the following line in the main file (lib/swgoh_companion.ex):
 
       #{defdelegate_template}

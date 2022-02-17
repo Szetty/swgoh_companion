@@ -24,12 +24,24 @@ defmodule SWGOHCompanion.SDK.Models do
       :mod_stats,
       # [Mod]
       :mods,
+      # 7
+      :rarity,
       # Gear
       :gear,
       # 5
       :relic_tier,
+      # Ability
+      :leader_ability,
+      # [Ability]
+      :non_leader_abilities,
+      # [Ability]
+      :omega_abilities,
+      # [Ability]
+      :total_omega_abilities,
       # [Ability]
       :zeta_abilities,
+      # [Ability]
+      :total_zeta_abilities,
       # [Ability]
       :omicron_abilities
     ]
@@ -157,7 +169,11 @@ defmodule SWGOHCompanion.SDK.Models do
       # unique
       :type,
       # 2
-      :order
+      :order,
+      # 6
+      :tier,
+      # 8
+      :max_tier
     ]
 
     def new(map) do

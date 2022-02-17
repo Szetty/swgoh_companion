@@ -49,7 +49,8 @@ defmodule SWGOHCompanion.MixProject do
       {:elixir_google_spreadsheets, "~> 0.1.17"},
       {:tesla, "~> 1.4"},
       {:floki, ">= 0.31.0"},
-      {:morphix, "~> 0.8.0"}
+      {:morphix, "~> 0.8.0"},
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
     ]
   end
 
@@ -65,7 +66,7 @@ defmodule SWGOHCompanion.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
     ]
   end
 end

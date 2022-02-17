@@ -10,8 +10,8 @@ import Config
 config :goth, :json, File.read!("./service-account.json")
 
 config :elixir_google_spreadsheets, :client,
-  request_workers: 50,
-  max_demand: 100,
+  request_workers: 1,
+  max_demand: 10,
   max_interval: :timer.minutes(1),
   interval: 100,
   max_rows_per_request: 150
@@ -43,10 +43,21 @@ config :logger, :console,
   metadata: :all
 
 config :logger,
-  level: :warn
+  level: :debug
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :tailwind,
+  version: "3.0.18",
+  default: [
+    args: ~w(
+      --config=tailwind.config.js
+      --input=css/app.css
+      --output=../priv/static/assets/app.css
+    ),
+    cd: Path.expand("../assets", __DIR__)
+  ]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

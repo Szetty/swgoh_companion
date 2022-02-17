@@ -75,13 +75,66 @@ defmodule SWGOHCompanion.Hunters.Common do
     "sith trio" => ["traya", "sion", "dn"],
     "separatists" => ["gg", "ng", "b1", "b2", "ig100", "cd", "jango", "ddk"],
     "sith empire" => ["dr", "bsf", "malak", "hk47", "set", "sm", "sa"],
-    "bounty hunters" => ["bossk", "boba", "jango", "fs", "dengar", "mando", "greef", "zw", "ig-88", "cb", "greedo"],
+    "bounty hunters" => [
+      "bossk",
+      "boba",
+      "jango",
+      "fs",
+      "dengar",
+      "mando",
+      "greef",
+      "zw",
+      "ig-88",
+      "cb",
+      "greedo"
+    ],
     "plug & play" => ["wampa", "en", "wt", "gat", "hoda", "bo", "armorer", "c3po", "r2d2"],
-    "imperial troopers" => ["gv", "ap", "darkt", "ranget", "mg", "deatht", "cs", "snowt", "shoret"],
+    "imperial troopers" => [
+      "gv",
+      "ap",
+      "darkt",
+      "ranget",
+      "mg",
+      "deatht",
+      "cs",
+      "snowt",
+      "shoret"
+    ],
     "ewoks" => ["cc", "ee", "es", "teebo", "logray", "wicket", "paploo"],
     "galactic legends" => ["slkr", "jml", "rey", "see", "lv", "jmk"],
-    "resistance" => ["jtr", "vshs", "vsc", "finn", "rs", "pd", "rp", "bb8", "rt", "rhf", "rhp", "ah", "rose"],
-    "sith" => ["dv", "ep", "traya", "sion", "dn", "cd", "ds", "dm", "bsf", "dt", "set", "sm", "so", "sa", "dm", "dr"]
+    "resistance" => [
+      "jtr",
+      "vshs",
+      "vsc",
+      "finn",
+      "rs",
+      "pd",
+      "rp",
+      "bb8",
+      "rt",
+      "rhf",
+      "rhp",
+      "ah",
+      "rose"
+    ],
+    "sith" => [
+      "dv",
+      "ep",
+      "traya",
+      "sion",
+      "dn",
+      "cd",
+      "ds",
+      "dm",
+      "bsf",
+      "dt",
+      "set",
+      "sm",
+      "so",
+      "sa",
+      "dm",
+      "dr"
+    ]
   }
 
   def form_teams_and_separate_rest_of_roster(roster, :default) do

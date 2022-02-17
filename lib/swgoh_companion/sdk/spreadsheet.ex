@@ -7,29 +7,40 @@ defmodule SWGOHCompanion.SDK.Spreadsheet do
       import Spreadsheet
       @behaviour Spreadsheet.Writeable
 
-      defp write_rows(sheet \\ open_spreadsheet(@sheet_name), rows) do
+      defp write_rows(sheet \\ get_or_open_sheet(@sheet_name), rows) do
         rows
         |> to_spreadsheet_rows()
-        |> (fn rows ->
-              write_spreadsheet_rows(
-                sheet,
-                rows,
-                @starting_row,
-                @starting_column
-              )
-            end).()
+        |> then(
+          &write_spreadsheet_rows(
+            sheet,
+            &1,
+            @starting_row,
+            @starting_column
+          )
+        )
+      end
+
+      defp read_spreadsheet_rows(sheet \\ get_or_open_sheet(@sheet_name), ranges) do
+        {:ok, data} = GSS.Spreadsheet.read_rows(sheet, ranges)
+        data
       end
     end
   end
 
-  def open_spreadsheet(sheet_name) do
-    {:ok, pid} = GSS.Spreadsheet.Supervisor.spreadsheet(@spreadsheet_id, list_name: sheet_name)
-    pid
-  end
+  def get_or_open_sheet(sheet_name) do
+    sheet_pid_name = String.to_atom(sheet_name)
 
-  def read_spreadsheet_rows(sheet, ranges) do
-    {:ok, data} = GSS.Spreadsheet.read_rows(sheet, ranges)
-    data
+    case Process.whereis(sheet_pid_name) do
+      pid when is_pid(pid) ->
+        pid
+
+      nil ->
+        {:ok, pid} =
+          GSS.Spreadsheet.Supervisor.spreadsheet(@spreadsheet_id, list_name: sheet_name)
+
+        Process.register(pid, sheet_pid_name)
+        pid
+    end
   end
 
   def write_spreadsheet_rows(_, [], _, _), do: IO.puts("Empty rows, nothing to update")

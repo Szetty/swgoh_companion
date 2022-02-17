@@ -36,6 +36,7 @@ defmodule SWGOHCompanion.SDK.Acronyms do
     "darkt" => "Dark Trooper",
     "ddk" => "Droideka",
     "deatht" => "Death Trooper",
+    "dk" => "Director Krennic",
     "dm" => "Darth Maul",
     "dn" => "Darth Nihilus",
     "dr" => "Darth Revan",

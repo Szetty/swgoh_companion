@@ -21,7 +21,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
     IO.puts("Fetching player for #{player}")
 
     @player_url
-    |> Path.join(player)
+    |> Path.join("#{player}")
     |> HTTP.get_json()
     |> decode_player_response()
   end
@@ -68,6 +68,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
            "stats" => %{
              @speed_stat => speed
            },
+           "rarity" => rarity,
            "gear" => equipped_gear,
            "gear_level" => gear_level,
            "relic_tier" => relic_tier,
@@ -77,7 +78,41 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
          }
        }) do
     gear_count = Enum.count(equipped_gear, &Map.get(&1, "is_obtained"))
+
+    abilities =
+      ability_data
+      |> Enum.map(&decode_ability(ability_data, &1["id"]))
+
+    leader_ability = Enum.find(abilities, &(&1.type == "leader"))
+
+    non_leader_abilities = Enum.reject(abilities, &(&1.type == "leader"))
+
+    omega_abilities =
+      ability_data
+      |> Enum.filter(fn
+        %{"is_omega" => true, "ability_tier" => level, "tier_max" => level} -> true
+        _ -> false
+      end)
+      |> Enum.map(&decode_ability(ability_data, &1["id"]))
+
+    total_omega_abilities =
+      ability_data
+      |> Enum.filter(fn
+        %{"is_omega" => true} -> true
+        _ -> false
+      end)
+      |> Enum.map(&decode_ability(ability_data, &1["id"]))
+
     zeta_abilities = Enum.map(zeta_abilities, &decode_ability(ability_data, &1))
+
+    total_zeta_abilities =
+      ability_data
+      |> Enum.filter(fn
+        %{"is_zeta" => true} -> true
+        _ -> false
+      end)
+      |> Enum.map(&decode_ability(ability_data, &1["id"]))
+
     omicron_abilities = Enum.map(omicron_abilities, &decode_ability(ability_data, &1))
 
     %Character{
@@ -87,6 +122,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
       stats: %Stats{
         speed: speed
       },
+      rarity: rarity,
       gear: %Gear{
         level: gear_level,
         count: gear_count
@@ -94,14 +130,21 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
       # Quick fix for swgoh.gg bug where relic tiers are always bigger with 2
       relic_tier: max(relic_tier - 2, 0),
       # relic_tier: relic_tier,
+      leader_ability: leader_ability,
+      non_leader_abilities: non_leader_abilities,
+      omega_abilities: omega_abilities,
+      total_omega_abilities: total_omega_abilities,
       zeta_abilities: zeta_abilities,
+      total_zeta_abilities: total_zeta_abilities,
       omicron_abilities: omicron_abilities
     }
   end
 
   defp decode_ability(ability_data, ability_id) do
     %{
-      "name" => name
+      "name" => name,
+      "ability_tier" => tier,
+      "tier_max" => max_tier
     } = Enum.find(ability_data, &(Map.get(&1, "id") == ability_id))
 
     scan_result = Regex.scan(~r/^(.+)skill_.+(\d{2})$/, ability_id)
@@ -119,7 +162,9 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
     %Ability{
       name: name,
       type: type,
-      order: order
+      order: order,
+      tier: tier,
+      max_tier: max_tier
     }
   end
 

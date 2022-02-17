@@ -17,7 +17,18 @@ defmodule SWGOHCompanionWeb.Router do
   scope "/", SWGOHCompanionWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", RedirectController, :redirect_authenticated
+    get "/oauth/callbacks/", OAuthCallbackController, :new
+
+    live_session :default,
+      on_mount: [{SWGOHCompanionWeb.UserAuth, :current_user}, SWGOHCompanionWeb.Nav] do
+      live "/signin", SignInLive, :index
+    end
+
+    live_session :authenticated,
+      on_mount: [{SWGOHCompanionWeb.UserAuth, :ensure_authenticated}, SWGOHCompanionWeb.Nav] do
+      live "/home", HomeLive, :home
+    end
   end
 
   # Other scopes may use custom stacks.

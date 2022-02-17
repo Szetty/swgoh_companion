@@ -26,7 +26,8 @@ config :swgoh_companion, SWGOHCompanionWeb.Endpoint,
   secret_key_base: "1DVRzSlbGDN+MdXDmQZa3DnVTIH3n0v6N2ZeJVDaJvprsV9y+umshvTN8xCWFqf5",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support

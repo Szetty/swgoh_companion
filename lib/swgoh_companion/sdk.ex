@@ -31,4 +31,14 @@ defmodule SWGOHCompanion.SDK do
   defdelegate get_most_popular_mods, to: __MODULE__.SWGOHGG
 
   defdelegate get_all_player_data, to: __MODULE__.Hotutils
+
+  def recursive_merge(_key \\ nil, term1, term2)
+
+  def recursive_merge(_key, map1, map2) when is_map(map1) and is_map(map2) do
+    Map.merge(map1, map2, &recursive_merge/3)
+  end
+
+  def recursive_merge(_key, list1, list2) when is_list(list1) and is_list(list2) do
+    list1 ++ list2
+  end
 end

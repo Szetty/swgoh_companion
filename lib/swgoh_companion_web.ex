@@ -95,6 +95,11 @@ defmodule SWGOHCompanionWeb do
 
       import SWGOHCompanionWeb.ErrorHelpers
       alias SWGOHCompanionWeb.Router.Helpers, as: Routes
+      alias Phoenix.LiveView.JS
+
+      import SWGOHCompanionWeb.Live.Helpers
+
+      @endpoint SWGOHCompanionWeb.Endpoint
     end
   end
 
