@@ -114,49 +114,50 @@ defmodule SWGOHCompanion.Hunters.UpsertCharacters do
         data = Map.get(full_data, name, %{})
         Map.put(data, :name, character)
     end)
-    |> Enum.sort_by(& -&1.power)
+    |> Enum.sort_by(&(-&1.power))
     |> write_rows()
   end
 
   def to_spreadsheet_rows(data) do
     data
     |> Enum.map(fn %{
-      name: name,
-      power: power,
-      rarity: rarity,
-      minimum_ability_level: minimum_ability_level,
-      leader_ability_level: leader_ability_level,
-      gear_level: gear_level,
-      relic_tier: relic_tier,
-      stats: %Stats{
-        speed: speed
-      },
-      zetas_learnt: zetas_learnt,
-      total_zetas: total_zetas,
-      omegas_learnt: omegas_learnt,
-      total_omegas: total_omegas,
-      factions: factions,
-      role: role
-    } ->
+                     name: name,
+                     power: power,
+                     rarity: rarity,
+                     minimum_ability_level: minimum_ability_level,
+                     leader_ability_level: leader_ability_level,
+                     gear_level: gear_level,
+                     relic_tier: relic_tier,
+                     stats: %Stats{
+                       speed: speed
+                     },
+                     zetas_learnt: zetas_learnt,
+                     total_zetas: total_zetas,
+                     omegas_learnt: omegas_learnt,
+                     total_omegas: total_omegas,
+                     factions: factions,
+                     role: role
+                   } ->
       factions =
         factions
         |> Enum.map(&String.replace(&1, " ", ""))
         |> Enum.join("\n")
+
       [
-          name,
-          power,
-          factions,
-          role,
-          rarity,
-          minimum_ability_level,
-          gear_level,
-          relic_tier,
-          if(leader_ability_level != nil, do: Integer.to_string(leader_ability_level), else: ""),
-          zetas_learnt,
-          total_zetas,
-          omegas_learnt,
-          total_omegas,
-          speed
+        name,
+        power,
+        factions,
+        role,
+        rarity,
+        minimum_ability_level,
+        gear_level,
+        relic_tier,
+        if(leader_ability_level != nil, do: Integer.to_string(leader_ability_level), else: ""),
+        zetas_learnt,
+        total_zetas,
+        omegas_learnt,
+        total_omegas,
+        speed
       ]
     end)
   end

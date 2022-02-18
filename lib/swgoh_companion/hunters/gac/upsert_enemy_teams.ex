@@ -8,9 +8,9 @@ defmodule SWGOHCompanion.Hunters.GAC.UpsertEnemyTeams do
   alias SWGOHCompanion.Hunters.Common
   alias Common.Team
 
-  def upsert_enemy_teams(week, round_nr, teams) do
+  def upsert_enemy_teams(week, round_nr, teams, use_default_teams?) do
     Common.fetch_roster(week, round_nr)
-    |> Common.form_teams_and_separate_rest_of_roster(teams)
+    |> Common.form_teams_and_separate_rest_of_roster(teams, use_default_teams?)
     |> write_rows()
   end
 

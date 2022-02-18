@@ -1,13 +1,16 @@
 defmodule SWGOHCompanion.SDK.SWGOHGG do
   alias SWGOHCompanion.SDK
   alias SDK.HTTP
-  alias SDK.Models.{PlayerData, Character, Stats, Gear, Ability}
+  alias SDK.Models.{PlayerData, Character, Stats, Gear, Ability, GAC}
 
   @player "473362279"
   @percentage_threshold 10
 
-  @characters_url "https://swgoh.gg/api/characters"
-  @player_url "https://swgoh.gg/api/player"
+  @base_url "https://swgoh.gg"
+  @api_base_url "https://swgoh.gg/api"
+
+  @characters_url Path.join(@api_base_url, "/characters")
+  @player_url Path.join(@api_base_url, "/player")
 
   @speed_stat "5"
 
@@ -39,14 +42,21 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
   defp decode_player_response(%{
          "data" => %{
            "name" => player_name,
-           "guild_name" => guild_name
+           "guild_name" => guild_name,
+           "last_updated" => last_updated
          },
          "units" => units
        }) do
+    {:ok, last_updated, 0} =
+      last_updated
+      |> Kernel.<>("Z")
+      |> DateTime.from_iso8601()
+
     units
     |> decode_player_roster_response()
     |> Map.put(:name, player_name)
     |> Map.put(:guild_name, guild_name)
+    |> Map.put(:last_updated, last_updated)
   end
 
   defp decode_player_roster_response(units) do
@@ -74,7 +84,8 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
            "relic_tier" => relic_tier,
            "ability_data" => ability_data,
            "zeta_abilities" => zeta_abilities,
-           "omicron_abilities" => omicron_abilities
+           "omicron_abilities" => omicron_abilities,
+           "url" => character_path
          }
        }) do
     gear_count = Enum.count(equipped_gear, &Map.get(&1, "is_obtained"))
@@ -136,7 +147,8 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
       total_omega_abilities: total_omega_abilities,
       zeta_abilities: zeta_abilities,
       total_zeta_abilities: total_zeta_abilities,
-      omicron_abilities: omicron_abilities
+      omicron_abilities: omicron_abilities,
+      url: Path.join(@base_url, character_path)
     }
   end
 
@@ -252,5 +264,36 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
     base_url
     |> Path.join("/data/mods?filter_type=guilds_100_raid")
     |> HTTP.get_http_body()
+  end
+
+  def get_current_gac_bracket(ally_code) do
+    @api_base_url
+    |> Path.join("/player/#{ally_code}/gac-bracket/")
+    |> HTTP.get_json()
+    |> decode_gac_bracket_response()
+  end
+
+  defp decode_gac_bracket_response(%{
+    "data" => %{
+      "start_time" => start_time,
+      "season_number" => gac_nr,
+      "bracket_players" => players
+    }
+  }) do
+    {:ok, start_time, 0} =
+      start_time
+      |> Kernel.<>("Z")
+      |> DateTime.from_iso8601()
+
+    week = Calendar.strftime(start_time, "%Y_%m_%d")
+
+    ally_codes = Enum.map(players, & &1["ally_code"])
+
+    %GAC.Bracket{
+      week: week,
+      gac_nr: gac_nr,
+      start_time: start_time,
+      ally_codes: ally_codes
+    }
   end
 end

@@ -4,6 +4,9 @@ defmodule SWGOHCompanion.SDK.Models do
     defstruct [
       :name,
       :guild_name,
+      # DateTime.t()
+      :last_updated,
+      # [Character]
       characters: []
     ]
   end
@@ -43,7 +46,9 @@ defmodule SWGOHCompanion.SDK.Models do
       # [Ability]
       :total_zeta_abilities,
       # [Ability]
-      :omicron_abilities
+      :omicron_abilities,
+      # "https://swgoh.gg/p/473362279/characters/nightsister-acolyte"
+      :url
     ]
 
     def new(map) do

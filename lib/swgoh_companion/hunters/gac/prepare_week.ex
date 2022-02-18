@@ -7,25 +7,41 @@ defmodule SWGOHCompanion.Hunters.GAC.PrepareWeek do
 
   @rounds 1..3
 
-  def prepare_week(week, gac_nr, week_nr, ally_codes) do
+  def prepare_week(week_nr) do
+    %GAC.Bracket{
+      week: week,
+      gac_nr: gac_nr,
+      ally_codes: ally_codes,
+      start_time: start_time,
+    } = SDK.get_current_gac_bracket(SDK.current_user_ally_code())
+
     ally_codes =
       ally_codes
       |> Enum.map(&"#{&1}")
 
     {:ok, _} =
       Multi.new()
-      |> fetch_and_save_players(ally_codes)
+      |> fetch_and_save_players(ally_codes, start_time)
       |> prepare_gac_rounds(week, gac_nr, week_nr)
       |> prepare_current_user_roster(week)
       |> SWGOHCompanion.Repo.transaction()
+
+    report_number_of_rosters_processed(start_time, ally_codes)
   end
 
-  defp fetch_and_save_players(multi, ally_codes) do
+  defp fetch_and_save_players(multi, ally_codes, start_time) do
     ally_codes
-    |> Enum.reject(&(&1 == SDK.current_user_ally_code()))
-    |> Enum.reduce(multi, fn ally_code, multi ->
-      %PlayerData{name: player_name, guild_name: guild_name, characters: characters} =
-        SDK.get_player(ally_code)
+    |> Stream.reject(&(&1 == SDK.current_user_ally_code()))
+    |> Stream.map(& {&1, SDK.get_player(&1)})
+    |> Stream.filter(fn {_ally_code, player_data} ->
+      was_updated_after_start_time?(player_data.last_updated, start_time)
+    end)
+    |> Enum.reduce(multi, fn {ally_code, player_data}, multi ->
+      %PlayerData{
+        name: player_name,
+        guild_name: guild_name,
+        characters: characters,
+      } = player_data
 
       insert_account_operation_name = :"insert_account_#{ally_code}"
 
@@ -126,5 +142,22 @@ defmodule SWGOHCompanion.Hunters.GAC.PrepareWeek do
     )
     |> Repo.aggregate(:count)
     |> Kernel.>(0)
+  end
+
+  defp was_updated_after_start_time?(last_updated, start_time) do
+    DateTime.diff(last_updated, start_time)
+    |> Kernel.>=(0)
+  end
+
+  defp report_number_of_rosters_processed(start_time, ally_codes) do
+    from(
+      gac_roster in Repo.GACRoster,
+      where: gac_roster.ally_code in ^ally_codes,
+      where: gac_roster.computed_at_date >= ^start_time,
+      select: gac_roster.ally_code,
+      distinct: true
+    )
+    |> Repo.aggregate(:count)
+    |> IO.inspect(label: "Number of rosters processed for the current GAC week is: ")
   end
 end

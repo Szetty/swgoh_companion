@@ -8,6 +8,7 @@ defmodule SWGOHCompanion.SDK.Acronyms do
     "av" => "Asajj Ventress",
     "b1" => "B1 Battle Droid",
     "b2" => "B2 Super Battle Droid",
+    "bam" => "The Mandalorian (Beskar Armor)",
     "bando" => "The Mandalorian (Beskar Armor)",
     "bb8" => "BB-8",
     "bd" => "Biggs Darklighter",

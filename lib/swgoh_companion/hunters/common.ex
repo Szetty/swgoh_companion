@@ -23,7 +23,7 @@ defmodule SWGOHCompanion.Hunters.Common do
     ["gas", "st", "rex", "fives", "ctecho", "arct"],
     "Geos",
     ["ep", "mj", "dv"],
-    ["jkr", "gmy", "bs", "jb", "jkl", "gk"],
+    ["jkr", "gmy", "bs", "jb", "jkl", "gk", "hoda"],
     "Imperial Troopers",
     "CLS",
     "Bounty Hunters",
@@ -137,8 +137,12 @@ defmodule SWGOHCompanion.Hunters.Common do
     ]
   }
 
-  def form_teams_and_separate_rest_of_roster(roster, :default) do
-    form_teams_and_separate_rest_of_roster(roster, @default_teams)
+  def form_teams_and_separate_rest_of_roster(roster, teams, true) do
+    form_teams_and_separate_rest_of_roster(roster, teams ++ @default_teams)
+  end
+
+  def form_teams_and_separate_rest_of_roster(roster, teams, false) do
+    form_teams_and_separate_rest_of_roster(roster, teams)
   end
 
   def form_teams_and_separate_rest_of_roster(roster, teams) do
@@ -154,6 +158,7 @@ defmodule SWGOHCompanion.Hunters.Common do
       end)
       |> Enum.map(fn {name, team} -> {name, interpret_team(roster, team)} end)
       |> Enum.map(&build_team/1)
+      |> Enum.uniq()
       |> Enum.sort_by(&(-&1.power_avg))
 
     characters_in_teams =
