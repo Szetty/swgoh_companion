@@ -1,5 +1,6 @@
 defmodule SWGOHCompanion.SDK.Acronyms do
   @acronyms %{
+    "aa" => "Admiral Ackbar",
     "ah" => "Amilyn Holdo",
     "arct" => "ARC Trooper",
     "ap" => "Admiral Piett",
@@ -42,6 +43,7 @@ defmodule SWGOHCompanion.SDK.Acronyms do
     "dn" => "Darth Nihilus",
     "dr" => "Darth Revan",
     "ds" => "Darth Sidious",
+    "dt" => "Darth Talon",
     "dv" => "Darth Vader",
     "eb" => "Ezra Bridger",
     "en" => "Enfys Nest",
@@ -93,6 +95,7 @@ defmodule SWGOHCompanion.SDK.Acronyms do
     "kru" => "Kylo Ren (Unmasked)",
     "l337" => "L3-37",
     "lc" => "Lando Calrissian",
+    "lsf" => "Luke Skywalker (Farmboy)",
     "lu" => "Luminara Unduli",
     "lv" => "Lord Vader",
     "malak" => "Darth Malak",
