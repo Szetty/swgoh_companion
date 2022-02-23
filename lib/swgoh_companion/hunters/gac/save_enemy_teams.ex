@@ -33,7 +33,7 @@ defmodule SWGOHCompanion.Hunters.GAC.SaveEnemyTeams do
         leader_acronym: team.leader_acronym,
         characters: team.characters,
         stats: %{
-          power_avg: team.power_avg,
+          power_sum: team.power_sum,
           max_speed: team.max_speed,
           zeta_sum: team.zeta_sum,
           omicron_sum: team.omicron_sum

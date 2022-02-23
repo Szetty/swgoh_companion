@@ -19,13 +19,13 @@ defmodule SWGOHCompanion.Hunters.GAC.UpsertEnemyTeams do
       teams
       |> Enum.map(fn %Team{
                        name: name,
-                       power_avg: power_avg,
+                       power_sum: power_sum,
                        max_speed: max_speed,
                        zeta_sum: zeta_sum,
                        omicron_sum: omicron_sum,
                        characters: characters
                      } ->
-        [[name, power_avg, "", "", max_speed, zeta_sum, "", omicron_sum, ""]] ++
+        [[name, power_sum, "", "", max_speed, zeta_sum, "", omicron_sum, ""]] ++
           Enum.map(characters, &stringify_character/1) ++
           [[]]
       end)

@@ -11,7 +11,7 @@ defmodule SWGOHCompanion.Hunters.Common do
     defstruct [
       :name,
       :leader_acronym,
-      :power_avg,
+      :power_sum,
       :max_speed,
       :zeta_sum,
       :omicron_sum,
@@ -20,7 +20,7 @@ defmodule SWGOHCompanion.Hunters.Common do
   end
 
   @default_teams [
-    ["gas", "st", "rex", "fives", "ctecho", "arct"],
+    "501st",
     "Geos",
     ["ep", "mj", "dv"],
     ["jkr", "gmy", "bs", "jb", "jkl", "gk", "hoda"],
@@ -49,7 +49,8 @@ defmodule SWGOHCompanion.Hunters.Common do
     "geos" => ["gba", "sf", "gso", "gsp", "ptl"],
     "cls" => ["cls", "chewie", "t&c", "c3po", "han"],
     "phoenix" => ["hs", "eb", "kj", "zeb", "chopper", "sw"],
-    "phx" => ["hs", "eb", "kj", "zeb", "chopper"],
+    "phx" => ["hs", "eb", "kj", "zeb", "chopper", "sw"],
+    "phxt" => ["hs", "eb", "kj", "zeb", "chopper"],
     "mm + rebel fighters" => [
       "mm",
       "cara",
@@ -101,6 +102,7 @@ defmodule SWGOHCompanion.Hunters.Common do
       "shoret"
     ],
     "ewoks" => ["cc", "ee", "es", "teebo", "logray", "wicket", "paploo"],
+    "ewokt" => ["cc", "ee", "logray", "wicket", "paploo"],
     "galactic legends" => ["slkr", "jml", "rey", "see", "lv", "jmk"],
     "resistance" => [
       "jtr",
@@ -134,7 +136,9 @@ defmodule SWGOHCompanion.Hunters.Common do
       "sa",
       "dm",
       "dr"
-    ]
+    ],
+    "501st" => ["gas", "st", "rex", "fives", "ctecho", "arct"],
+    "stclones" => ["st", "rex", "fives", "ctecho", "arct"]
   }
 
   def form_teams_and_separate_rest_of_roster(roster, teams, true) do
@@ -158,8 +162,12 @@ defmodule SWGOHCompanion.Hunters.Common do
       end)
       |> Enum.map(fn {name, team} -> {name, interpret_team(roster, team)} end)
       |> Enum.map(&build_team/1)
-      |> Enum.uniq()
-      |> Enum.sort_by(&(-&1.power_avg))
+      |> Enum.uniq_by(fn %Team{characters: characters} ->
+        characters
+        |> Enum.map(& &1.name)
+        |> MapSet.new()
+      end)
+      |> Enum.sort_by(&(-&1.power_sum))
 
     characters_in_teams =
       teams
@@ -248,12 +256,12 @@ defmodule SWGOHCompanion.Hunters.Common do
     characters_with_power = Enum.filter(characters, &(&1.power > 5000))
 
     if characters_with_power != [] do
-      power_avg =
+      power_sum =
         characters_with_power
         |> Enum.map(& &1.power)
+        |> Enum.sort_by(& -&1)
+        |> Enum.take(5)
         |> Enum.sum()
-        |> Kernel./(Enum.count(characters_with_power))
-        |> Float.round()
 
       max_speed =
         characters
@@ -273,7 +281,7 @@ defmodule SWGOHCompanion.Hunters.Common do
       %Team{
         name: name,
         leader_acronym: leader_acronym,
-        power_avg: power_avg,
+        power_sum: power_sum,
         max_speed: max_speed,
         zeta_sum: zeta_sum,
         omicron_sum: omicron_sum,
@@ -283,7 +291,7 @@ defmodule SWGOHCompanion.Hunters.Common do
       %Team{
         name: name,
         leader_acronym: leader_acronym,
-        power_avg: 0,
+        power_sum: 0,
         max_speed: 0,
         zeta_sum: 0,
         omicron_sum: 0,
