@@ -71,6 +71,7 @@ defmodule SWGOHCompanion.Hunters.Common do
       "pao"
     ],
     "nightsisters" => ["mt", "od", "nz", "ns", "av", "talia", "ni"],
+    "nst" => ["mt", "od", "nz", "ns", "av"],
     "bad batch" => ["hunter", "wrecker", "tech", "echo", "omega"],
     "first order" => ["kru", "kr", "hux", "sitht", "fox", "fotp", "foo", "fos", "fosftp", "cp"],
     "sith trio" => ["traya", "sion", "dn"],
@@ -138,7 +139,7 @@ defmodule SWGOHCompanion.Hunters.Common do
       "dr"
     ],
     "501st" => ["gas", "st", "rex", "fives", "ctecho", "arct"],
-    "stclones" => ["st", "rex", "fives", "ctecho", "arct"]
+    "stct" => ["st", "rex", "fives", "ctecho", "arct"]
   }
 
   def form_teams_and_separate_rest_of_roster(roster, teams, true) do

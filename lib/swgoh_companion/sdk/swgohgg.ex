@@ -26,7 +26,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
     @player_url
     |> Path.join("#{player}")
     |> HTTP.get_json()
-    |> decode_player_response()
+    |> decode_player_response(player)
   end
 
   def get_player_roster(player \\ @player) do
@@ -36,7 +36,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
     |> Path.join(player)
     |> HTTP.get_json()
     |> Map.get("units")
-    |> decode_player_roster_response()
+    |> decode_player_roster_response(player)
   end
 
   defp decode_player_response(%{
@@ -46,24 +46,24 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
            "last_updated" => last_updated
          },
          "units" => units
-       }) do
+       }, ally_code) do
     {:ok, last_updated, 0} =
       last_updated
       |> Kernel.<>("Z")
       |> DateTime.from_iso8601()
 
     units
-    |> decode_player_roster_response()
+    |> decode_player_roster_response(ally_code)
     |> Map.put(:name, player_name)
     |> Map.put(:guild_name, guild_name)
     |> Map.put(:last_updated, last_updated)
   end
 
-  defp decode_player_roster_response(units) do
+  defp decode_player_roster_response(units, ally_code) do
     characters =
       units
       |> Enum.filter(&(get_in(&1, ["data", "combat_type"]) == 1))
-      |> Enum.map(&decode_character/1)
+      |> Enum.map(&decode_character(&1, ally_code))
 
     %PlayerData{
       characters: characters
@@ -87,7 +87,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
            "omicron_abilities" => omicron_abilities,
            "url" => character_path
          }
-       }) do
+       }, ally_code) do
     gear_count = Enum.count(equipped_gear, &Map.get(&1, "is_obtained"))
 
     abilities =
@@ -126,6 +126,12 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
 
     omicron_abilities = Enum.map(omicron_abilities, &decode_ability(ability_data, &1))
 
+    # Quick fix for swgoh.gg bug where relic tiers are always bigger with 2
+    relic_tier = max(relic_tier - 2, 0)
+    if ally_code == "473362279" && name == "Darth Vader" do
+      if relic_tier != 9, do: raise("Incorrect relic tier #{relic_tier}")
+    end
+
     %Character{
       id: id,
       name: name,
@@ -138,9 +144,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
         level: gear_level,
         count: gear_count
       },
-      # Quick fix for swgoh.gg bug where relic tiers are always bigger with 2
-      relic_tier: max(relic_tier - 2, 0),
-      # relic_tier: relic_tier,
+      relic_tier: relic_tier,
       leader_ability: leader_ability,
       non_leader_abilities: non_leader_abilities,
       omega_abilities: omega_abilities,
