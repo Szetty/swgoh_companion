@@ -12,7 +12,7 @@ For setting it up you need to setup a service-account.json as described in [Elix
 
   Example generating new hunter:
   ```shell
-  mix hunter.gen characters --sheet "Characters"
+  mix hunter.gen upsert_characters --sheet "Characters"
   ```
 
   To run a hunter just execute the associated shell script:

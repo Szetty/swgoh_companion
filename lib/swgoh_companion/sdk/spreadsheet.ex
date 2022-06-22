@@ -7,20 +7,23 @@ defmodule SWGOHCompanion.SDK.Spreadsheet do
       import Spreadsheet
       @behaviour Spreadsheet.Writeable
 
-      defp write_rows(sheet \\ get_or_open_sheet(@sheet_name), rows) do
+      defp write_rows(rows, starting_row \\ @starting_row, starting_column \\ @starting_column) do
+        sheet = get_or_open_sheet(@sheet_name)
+
         rows
         |> to_spreadsheet_rows()
         |> then(
           &write_spreadsheet_rows(
             sheet,
             &1,
-            @starting_row,
-            @starting_column
+            starting_row,
+            starting_column
           )
         )
       end
 
-      defp read_spreadsheet_rows(sheet \\ get_or_open_sheet(@sheet_name), ranges) do
+      defp read_spreadsheet_rows(ranges) do
+        sheet = get_or_open_sheet(@sheet_name)
         {:ok, data} = GSS.Spreadsheet.read_rows(sheet, ranges)
         data
       end

@@ -121,15 +121,23 @@ defmodule SWGOHCompanion.SDK.Models do
 
   defmodule Stats do
     @derive Jason.Encoder
-    defstruct [:speed]
+    defstruct [
+      health: 0,
+      protection: 0,
+      speed: 0,
+      crit_damage: 0,
+      potency: 0,
+      tenacity: 0,
+      physical_damage: 0,
+      crit_chance: 0,
+      armor: 0,
+    ]
 
     def new(map) do
       Kernel.struct!(__MODULE__, map)
     end
 
-    def empty do
-      %__MODULE__{speed: 0}
-    end
+    def empty, do: %__MODULE__{}
   end
 
   defmodule Mod do

@@ -20,6 +20,7 @@ defmodule SWGOHCompanion.Hunters.Common do
   end
 
   @default_teams [
+    "STCT",
     "501st",
     "Geos",
     ["ep", "mj", "dv"],
@@ -138,8 +139,10 @@ defmodule SWGOHCompanion.Hunters.Common do
       "dm",
       "dr"
     ],
-    "501st" => ["gas", "st", "rex", "fives", "ctecho", "arct"],
-    "stct" => ["st", "rex", "fives", "ctecho", "arct"]
+    "501st" => ["gas", "rex", "fives", "ctecho", "arct"],
+    "stct" => ["st", "rex", "fives", "ctecho", "arct"],
+    "or" => ["co", "candy", "juhani", "zaal", "mv"],
+    "se" => ["dr", "bsf", "malak", "hk47", "set"]
   }
 
   def form_teams_and_separate_rest_of_roster(roster, teams, true) do

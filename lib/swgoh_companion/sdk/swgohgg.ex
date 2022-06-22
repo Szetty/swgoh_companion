@@ -7,12 +7,22 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
   @percentage_threshold 10
 
   @base_url "https://swgoh.gg"
-  @api_base_url "https://swgoh.gg/api"
+  @api_base_url "http://api.swgoh.gg"
 
   @characters_url Path.join(@api_base_url, "/characters")
   @player_url Path.join(@api_base_url, "/player")
 
-  @speed_stat "5"
+  @stat_ids_and_multipliers %{
+    health: {"1", 1},
+    protection: {"28", 1},
+    speed: {"5", 1},
+    crit_damage: {"16", 100},
+    potency: {"17", 100},
+    tenacity: {"18", 100},
+    physical_damage: {"6", 1},
+    crit_chance: {"14", 1},
+    armor: {"8", 1}
+  }
 
   def get_all_characters() do
     IO.puts("Fetching characters")
@@ -75,9 +85,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
            "base_id" => id,
            "name" => name,
            "power" => power,
-           "stats" => %{
-             @speed_stat => speed
-           },
+           "stats" => stats,
            "rarity" => rarity,
            "gear" => equipped_gear,
            "gear_level" => gear_level,
@@ -88,6 +96,14 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
            "url" => character_path
          }
        }, ally_code) do
+    stats =
+      @stat_ids_and_multipliers
+      |> Enum.map(fn {stat_name, {stat_id, multiplier}} ->
+        stat_value = stats[stat_id]
+        {stat_name, stat_value * multiplier}
+      end)
+      |> Stats.new()
+
     gear_count = Enum.count(equipped_gear, &Map.get(&1, "is_obtained"))
 
     abilities =
@@ -136,9 +152,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
       id: id,
       name: name,
       power: power,
-      stats: %Stats{
-        speed: speed
-      },
+      stats: stats,
       rarity: rarity,
       gear: %Gear{
         level: gear_level,

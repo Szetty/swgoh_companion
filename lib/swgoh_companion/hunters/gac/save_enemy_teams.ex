@@ -23,7 +23,7 @@ defmodule SWGOHCompanion.Hunters.GAC.SaveEnemyTeams do
 
     [roster] =
       round.gac_rosters
-      |> Enum.reject(&(&1.ally_code != SDK.current_user_ally_code()))
+      |> Enum.reject(&(&1.ally_code == SDK.current_user_ally_code()))
 
     teams
     |> Enum.reduce(Multi.new(), fn %Team{} = team, multi ->
