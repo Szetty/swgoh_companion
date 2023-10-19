@@ -1,7 +1,7 @@
 defmodule SWGOHCompanion.Hunters.UpsertMissingGearCount do
   @sheet_name "To Focus"
   @starting_row 2
-  @starting_column "T"
+  @starting_column "K"
 
   use SWGOHCompanion.SDK, spreadsheet: true
   alias SDK.HTTP
@@ -18,6 +18,15 @@ defmodule SWGOHCompanion.Hunters.UpsertMissingGearCount do
       "Mk 5 A/KT Stun Gun",
       "Mk 6 A/KT Stun Gun",
       "Mk 4 Czerka Stun Cuffs"
+    ],
+    "Kyrotech" => [
+      "Mk 9 Kyrotech Battle Computer",
+      "Mk 7 Kyrotech Power Converter",
+      "Mk 7 Kyrotech Shock Prod"
+    ],
+    "Mk 8 BioTech Implant" => [
+      "Mk 8 BioTech Implant",
+      "Mk 6 A/KT Stun Gun"
     ]
   }
   @character_name_mappings %{
@@ -46,15 +55,17 @@ defmodule SWGOHCompanion.Hunters.UpsertMissingGearCount do
         {name, url}
       end)
 
-    ["Q2:Q"]
+    ["B2:B"]
     |> read_spreadsheet_rows()
     |> Enum.map(fn
       [character] ->
         name = Map.get(@character_name_mappings, character, character)
+
         @interested_gear_pieces
         |> Enum.map(fn {_, gears} ->
           compute_missing_gear_count(gears, character_urls_by_name[name])
         end)
+
       [] ->
         []
     end)
@@ -65,7 +76,7 @@ defmodule SWGOHCompanion.Hunters.UpsertMissingGearCount do
     data
   end
 
-  defp compute_missing_gear_count(gear, url) do
+  defp compute_missing_gear_count(gears, url) do
     url
     |> HTTP.get_http_body()
     |> Floki.parse_document!()
@@ -73,8 +84,8 @@ defmodule SWGOHCompanion.Hunters.UpsertMissingGearCount do
     |> Enum.map(fn needed_gear_html ->
       name =
         needed_gear_html
-        |> Floki.find("span[title]")
-        |> Floki.attribute("title")
+        |> Floki.find("span[data-original-title]")
+        |> Floki.attribute("data-original-title")
         |> hd
 
       count =
@@ -85,7 +96,7 @@ defmodule SWGOHCompanion.Hunters.UpsertMissingGearCount do
 
       {name, count}
     end)
-    |> Enum.filter(fn {name, _count} -> name in gear end)
+    |> Enum.filter(fn {name, _count} -> name in gears end)
     |> Enum.map(fn {_name, count} -> count end)
     |> Enum.sum()
   end

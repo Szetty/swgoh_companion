@@ -8,5 +8,5 @@ docker run -d \
     -e PGDATA=/var/lib/postgresql/data \
     -v $PWD/pgdata:/var/lib/postgresql/data \
     -p 5431:5431 \
-    postgres \
+    postgres:14 \
     -c 'port=5431'

@@ -32,7 +32,9 @@ defmodule SWGOHCompanion.Hunters.UpsertCharacterMods do
                                level: level,
                                primary_stat_name: primary_stat_name,
                                primary_stats: %Stats{speed: speed_from_primary},
-                               secondary_stats: %Stats{speed: speed_from_secondary},
+                               secondary_stats: %ModSecondaryStats{
+                                 speed: %{value: speed_from_secondary}
+                               },
                                set_stat_name: set_stat_name,
                                slot: slot
                              } ->

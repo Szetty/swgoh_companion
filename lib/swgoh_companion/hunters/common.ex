@@ -142,7 +142,8 @@ defmodule SWGOHCompanion.Hunters.Common do
     "501st" => ["gas", "rex", "fives", "ctecho", "arct"],
     "stct" => ["st", "rex", "fives", "ctecho", "arct"],
     "or" => ["co", "candy", "juhani", "zaal", "mv"],
-    "se" => ["dr", "bsf", "malak", "hk47", "set"]
+    "se" => ["dr", "bsf", "malak", "hk47", "set"],
+    "jawas" => ["cn", "jawa", "dathcha", "js", "jawae"]
   }
 
   def form_teams_and_separate_rest_of_roster(roster, teams, true) do
@@ -263,7 +264,7 @@ defmodule SWGOHCompanion.Hunters.Common do
       power_sum =
         characters_with_power
         |> Enum.map(& &1.power)
-        |> Enum.sort_by(& -&1)
+        |> Enum.sort_by(&(-&1))
         |> Enum.take(5)
         |> Enum.sum()
 

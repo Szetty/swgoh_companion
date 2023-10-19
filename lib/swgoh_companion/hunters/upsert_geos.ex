@@ -12,7 +12,7 @@ defmodule SWGOHCompanion.Hunters.UpsertGeos do
       speed: 260
     },
     "sf" => %{
-      hp_and_prot: 125000,
+      hp_and_prot: 125_000,
       armor: 50
     },
     "gsp" => %{
@@ -40,15 +40,18 @@ defmodule SWGOHCompanion.Hunters.UpsertGeos do
       |> Acronyms.expand_acronyms()
       |> Enum.map(fn {geo_acronym, name} ->
         stat_limits = @important_stats_with_limits[geo_acronym]
-        %Character{stats: %Stats{
-          speed: speed,
-          health: health,
-          protection: protection,
-          physical_damage: physical_damage,
-          crit_chance: crit_chance,
-          armor: armor,
-          potency: potency
-        }} = characters_by_name[name]
+
+        %Character{
+          stats: %Stats{
+            speed: speed,
+            health: health,
+            protection: protection,
+            physical_damage: physical_damage,
+            crit_chance: crit_chance,
+            armor: armor,
+            potency: potency
+          }
+        } = characters_by_name[name]
 
         hp_and_prot = health + protection
 
@@ -70,31 +73,44 @@ defmodule SWGOHCompanion.Hunters.UpsertGeos do
       end)
 
     %{name: name, geos: geos}
-    |> write_rows(starting_row)
+    |> write_rows(starting_row: starting_row)
   end
 
   def to_spreadsheet_rows(%{name: name, geos: geos}) do
-    [[name, "Speed", "Speed Limit", "HP+Prot", "HP+Prot Limit", "Armor", "Armor Limit", "Physical Damage", "Physical Damage Limit", "Crit Chance", "Crit Chance Limit", "Potency", "Potency Limit"]]
-    ++ (
-      geos
-      |> Enum.map(fn geo ->
-        [
-          geo[:name],
-          geo[:speed],
-          geo[:speed_limit],
-          geo[:hp_and_prot],
-          geo[:hp_and_prot_limit],
-          geo[:armor] |> Float.round(2),
-          geo[:armor_limit],
-          geo[:physical_damage],
-          geo[:physical_damage_limit],
-          geo[:crit_chance] |> Float.round(2),
-          geo[:crit_chance_limit],
-          geo[:potency] |> Float.round(2),
-          geo[:potency_limit]
-        ]
-      end)
-    )
+    [
+      [
+        name,
+        "Speed",
+        "Speed Limit",
+        "HP+Prot",
+        "HP+Prot Limit",
+        "Armor",
+        "Armor Limit",
+        "Physical Damage",
+        "Physical Damage Limit",
+        "Crit Chance",
+        "Crit Chance Limit",
+        "Potency",
+        "Potency Limit"
+      ]
+    ] ++
+      (geos
+       |> Enum.map(fn geo ->
+         [
+           geo[:name],
+           geo[:speed],
+           geo[:speed_limit],
+           geo[:hp_and_prot],
+           geo[:hp_and_prot_limit],
+           geo[:armor] |> Float.round(2),
+           geo[:armor_limit],
+           geo[:physical_damage],
+           geo[:physical_damage_limit],
+           geo[:crit_chance] |> Float.round(2),
+           geo[:crit_chance_limit],
+           geo[:potency] |> Float.round(2),
+           geo[:potency_limit]
+         ]
+       end))
   end
-
 end

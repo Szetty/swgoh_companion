@@ -12,7 +12,7 @@ defmodule SWGOHCompanion.Hunters.GAC.PrepareWeek do
       week: week,
       gac_nr: gac_nr,
       ally_codes: ally_codes,
-      start_time: start_time,
+      start_time: start_time
     } = SDK.get_current_gac_bracket(SDK.current_user_ally_code())
 
     ally_codes =
@@ -32,7 +32,7 @@ defmodule SWGOHCompanion.Hunters.GAC.PrepareWeek do
   defp fetch_and_save_players(multi, ally_codes, start_time) do
     ally_codes
     |> Stream.reject(&(&1 == SDK.current_user_ally_code()))
-    |> Stream.map(& {&1, SDK.get_player(&1)})
+    |> Stream.map(&{&1, SDK.get_player(&1)})
     |> Stream.filter(fn {_ally_code, player_data} ->
       was_updated_after_start_time?(player_data.last_updated, start_time)
     end)
@@ -40,7 +40,7 @@ defmodule SWGOHCompanion.Hunters.GAC.PrepareWeek do
       %PlayerData{
         name: player_name,
         guild_name: guild_name,
-        characters: characters,
+        characters: characters
       } = player_data
 
       insert_account_operation_name = :"insert_account_#{ally_code}"
@@ -150,14 +150,20 @@ defmodule SWGOHCompanion.Hunters.GAC.PrepareWeek do
   end
 
   defp report_number_of_rosters_processed(start_time, ally_codes) do
-    from(
-      gac_roster in Repo.GACRoster,
-      where: gac_roster.ally_code in ^ally_codes,
-      where: gac_roster.computed_at_date >= ^start_time,
-      select: gac_roster.ally_code,
-      distinct: true
+    processed_account_names =
+      from(
+        gac_roster in Repo.GACRoster,
+        join: a in Repo.Account,
+        on: a.ally_code == gac_roster.ally_code,
+        where: gac_roster.ally_code in ^ally_codes,
+        where: gac_roster.computed_at_date >= ^start_time,
+        select: a.name,
+        distinct: true
+      )
+      |> Repo.all()
+
+    IO.puts(
+      "#{Enum.count(processed_account_names)} processed rosters: #{inspect(processed_account_names)}"
     )
-    |> Repo.aggregate(:count)
-    |> IO.inspect(label: "Number of rosters processed for the current GAC week is: ")
   end
 end

@@ -121,17 +121,15 @@ defmodule SWGOHCompanion.SDK.Models do
 
   defmodule Stats do
     @derive Jason.Encoder
-    defstruct [
-      health: 0,
-      protection: 0,
-      speed: 0,
-      crit_damage: 0,
-      potency: 0,
-      tenacity: 0,
-      physical_damage: 0,
-      crit_chance: 0,
-      armor: 0,
-    ]
+    defstruct health: 0,
+              protection: 0,
+              speed: 0,
+              crit_damage: 0,
+              potency: 0,
+              tenacity: 0,
+              physical_damage: 0,
+              crit_chance: 0,
+              armor: 0
 
     def new(map) do
       Kernel.struct!(__MODULE__, map)
@@ -150,12 +148,34 @@ defmodule SWGOHCompanion.SDK.Models do
       :primary_stats,
       :set_stat_name,
       :secondary_stats,
-      :slot
+      :slot,
+      :slot_name
     ]
 
     def new(map) do
       Kernel.struct!(__MODULE__, map)
     end
+  end
+
+  defmodule ModSecondaryStats do
+    @derive Jason.Encoder
+    @empty_value %{value: 0, rolls: 0}
+    defstruct speed: @empty_value,
+              potency: @empty_value,
+              tenacity: @empty_value,
+              offense: @empty_value,
+              offense_percent: @empty_value,
+              health: @empty_value,
+              health_percent: @empty_value,
+              protection: @empty_value,
+              protection_percent: @empty_value,
+              crit_chance: @empty_value
+
+    def new(map) do
+      Kernel.struct!(__MODULE__, map)
+    end
+
+    def empty, do: %__MODULE__{}
   end
 
   defmodule Gear do
@@ -192,5 +212,24 @@ defmodule SWGOHCompanion.SDK.Models do
     def new(map) do
       Kernel.struct!(__MODULE__, map)
     end
+  end
+
+  defmodule GuildProfile do
+    @derive Jason.Encoder
+    defstruct [
+      :guild_id,
+      :name,
+      :member_count,
+      # [GuildMember]
+      :members
+    ]
+  end
+
+  defmodule GuildMember do
+    @derive Jason.Encoder
+    defstruct [
+      :ally_code,
+      :player_name
+    ]
   end
 end

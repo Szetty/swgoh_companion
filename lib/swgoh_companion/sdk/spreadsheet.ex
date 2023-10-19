@@ -7,8 +7,12 @@ defmodule SWGOHCompanion.SDK.Spreadsheet do
       import Spreadsheet
       @behaviour Spreadsheet.Writeable
 
-      defp write_rows(rows, starting_row \\ @starting_row, starting_column \\ @starting_column) do
-        sheet = get_or_open_sheet(@sheet_name)
+      defp write_rows(rows, opts \\ []) do
+        starting_row = Keyword.get(opts, :starting_row, @starting_row)
+        starting_column = Keyword.get(opts, :starting_column, @starting_column)
+        sheet_name = Keyword.get(opts, :sheet_name, @sheet_name)
+
+        sheet = get_or_open_sheet(sheet_name, opts)
 
         rows
         |> to_spreadsheet_rows()
@@ -22,15 +26,18 @@ defmodule SWGOHCompanion.SDK.Spreadsheet do
         )
       end
 
-      defp read_spreadsheet_rows(ranges) do
-        sheet = get_or_open_sheet(@sheet_name)
+      defp read_spreadsheet_rows(ranges, opts \\ []) do
+        sheet_name = Keyword.get(opts, :sheet_name, @sheet_name)
+
+        sheet = get_or_open_sheet(sheet_name, opts)
         {:ok, data} = GSS.Spreadsheet.read_rows(sheet, ranges)
         data
       end
     end
   end
 
-  def get_or_open_sheet(sheet_name) do
+  def get_or_open_sheet(sheet_name, opts \\ []) do
+    spreadsheet_id = Keyword.get(opts, :spreadsheet_id, @spreadsheet_id)
     sheet_pid_name = String.to_atom(sheet_name)
 
     case Process.whereis(sheet_pid_name) do
@@ -39,7 +46,7 @@ defmodule SWGOHCompanion.SDK.Spreadsheet do
 
       nil ->
         {:ok, pid} =
-          GSS.Spreadsheet.Supervisor.spreadsheet(@spreadsheet_id, list_name: sheet_name)
+          GSS.Spreadsheet.Supervisor.spreadsheet(spreadsheet_id, list_name: sheet_name)
 
         Process.register(pid, sheet_pid_name)
         pid
@@ -65,7 +72,8 @@ defmodule SWGOHCompanion.SDK.Spreadsheet do
         &"#{starting_column}#{starting_row + &1}:#{ending_column}#{starting_row + &1}"
       )
 
-    GSS.Spreadsheet.write_rows(sheet, ranges, rows)
+    GSS.Spreadsheet.write_rows(sheet, ranges, rows, recv_timeout: 10_000)
+    # File.write!("1.csv", rows |> Enum.map(&Enum.join(&1, ",")) |> Enum.join("\n"))
   end
 
   defp column_letter_to_number(letter), do: letter |> String.to_charlist() |> hd

@@ -1,5 +1,4 @@
 defmodule S.GAC do
-
   alias SWGOHCompanion.Repo
   alias Repo.{GACRound, GACRoundRoster, GACRoster, GACTeam}
   import Ecto.Query
@@ -25,15 +24,24 @@ defmodule S.GAC do
 
   def transform_teams_to_input do
     ~s"""
-    qgj,owk,bs,jb,mw
-    padme,at,jka,gmy,gk
-    co,candy,zaal,mw,t3m4
-    jtr,bb8,reys,ah,vshs
-    jml,jkr,gas,jkl,hoda
-    bossk,boba,jango,mando,cb
+    mt,av,talia
+    gba,sf,gsp
+    rolo,chs,pl
+    bossk,zw,boba
+    bam,ig11,kuiil
+    mm,bd,wa
+    qgj,jka,kam
+    malgus,dr,bsf
+    50r-t,ddk,gg
+    ptl,bt1,000
+    hs,kj,sw
+    co,mv,zaal
+    cc,wicket,ee
+    reva,7th,gi
+    rex,fives,crex
     """
     |> String.split("\n")
-    |> Enum.reject(& &1 == "")
+    |> Enum.reject(&(&1 == ""))
     |> Enum.map(&String.split(&1, ","))
     |> Enum.map(&Enum.map(&1, fn s -> "\"#{String.trim(s)}\"" end))
     |> Enum.map(fn
@@ -41,7 +49,6 @@ defmodule S.GAC do
       l -> "[" <> Enum.join(l, ",") <> "]"
     end)
     |> Enum.join(",")
-    |> IO.puts
+    |> IO.puts()
   end
-
 end

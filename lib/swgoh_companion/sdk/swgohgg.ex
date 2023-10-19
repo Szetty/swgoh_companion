@@ -1,16 +1,17 @@
 defmodule SWGOHCompanion.SDK.SWGOHGG do
   alias SWGOHCompanion.SDK
   alias SDK.HTTP
-  alias SDK.Models.{PlayerData, Character, Stats, Gear, Ability, GAC}
+  alias SDK.Models.{PlayerData, Character, Stats, Gear, Ability, GAC, GuildProfile, GuildMember}
 
   @player "473362279"
   @percentage_threshold 10
 
   @base_url "https://swgoh.gg"
-  @api_base_url "http://api.swgoh.gg"
+  @api_base_url "http://swgoh.gg/api"
 
   @characters_url Path.join(@api_base_url, "/characters")
   @player_url Path.join(@api_base_url, "/player")
+  @guild_profile_url Path.join(@api_base_url, "/guild-profile")
 
   @stat_ids_and_multipliers %{
     health: {"1", 1},
@@ -49,14 +50,27 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
     |> decode_player_roster_response(player)
   end
 
-  defp decode_player_response(%{
-         "data" => %{
-           "name" => player_name,
-           "guild_name" => guild_name,
-           "last_updated" => last_updated
+  def get_guild_profile(guild_id) do
+    IO.puts("Fetching guild profile for #{guild_id}")
+
+    @guild_profile_url
+    |> Path.join(guild_id)
+    |> HTTP.get_json()
+    |> Map.get("data")
+    |> decode_guild_profile_response(guild_id)
+  end
+
+  defp decode_player_response(
+         %{
+           "data" => %{
+             "name" => player_name,
+             "guild_name" => guild_name,
+             "last_updated" => last_updated
+           },
+           "units" => units
          },
-         "units" => units
-       }, ally_code) do
+         ally_code
+       ) do
     {:ok, last_updated, 0} =
       last_updated
       |> Kernel.<>("Z")
@@ -80,22 +94,25 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
     }
   end
 
-  defp decode_character(%{
-         "data" => %{
-           "base_id" => id,
-           "name" => name,
-           "power" => power,
-           "stats" => stats,
-           "rarity" => rarity,
-           "gear" => equipped_gear,
-           "gear_level" => gear_level,
-           "relic_tier" => relic_tier,
-           "ability_data" => ability_data,
-           "zeta_abilities" => zeta_abilities,
-           "omicron_abilities" => omicron_abilities,
-           "url" => character_path
-         }
-       }, ally_code) do
+  defp decode_character(
+         %{
+           "data" => %{
+             "base_id" => id,
+             "name" => name,
+             "power" => power,
+             "stats" => stats,
+             "rarity" => rarity,
+             "gear" => equipped_gear,
+             "gear_level" => gear_level,
+             "relic_tier" => relic_tier,
+             "ability_data" => ability_data,
+             "zeta_abilities" => zeta_abilities,
+             "omicron_abilities" => omicron_abilities,
+             "url" => character_path
+           }
+         },
+         ally_code
+       ) do
     stats =
       @stat_ids_and_multipliers
       |> Enum.map(fn {stat_name, {stat_id, multiplier}} ->
@@ -144,6 +161,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
 
     # Quick fix for swgoh.gg bug where relic tiers are always bigger with 2
     relic_tier = max(relic_tier - 2, 0)
+
     if ally_code == "473362279" && name == "Darth Vader" do
       if relic_tier != 9, do: raise("Incorrect relic tier #{relic_tier}")
     end
@@ -292,12 +310,12 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
   end
 
   defp decode_gac_bracket_response(%{
-    "data" => %{
-      "start_time" => start_time,
-      "season_number" => gac_nr,
-      "bracket_players" => players
-    }
-  }) do
+         "data" => %{
+           "start_time" => start_time,
+           "season_number" => gac_nr,
+           "bracket_players" => players
+         }
+       }) do
     {:ok, start_time, 0} =
       start_time
       |> Kernel.<>("Z")
@@ -312,6 +330,35 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
       gac_nr: gac_nr,
       start_time: start_time,
       ally_codes: ally_codes
+    }
+  end
+
+  defp decode_guild_profile_response(
+         %{
+           "guild_id" => guild_id,
+           "name" => name,
+           "member_count" => 50,
+           "members" => members
+         },
+         guild_id
+       ) do
+    members = Enum.map(members, &decode_guild_member(&1))
+
+    %GuildProfile{
+      guild_id: guild_id,
+      name: name,
+      member_count: 50,
+      members: members
+    }
+  end
+
+  defp decode_guild_member(%{
+         "ally_code" => ally_code,
+         "player_name" => player_name
+       }) do
+    %GuildMember{
+      ally_code: ally_code,
+      player_name: player_name
     }
   end
 end

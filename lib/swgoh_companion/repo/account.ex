@@ -18,6 +18,6 @@ defmodule SWGOHCompanion.Repo.Account do
   def changeset(account \\ %Account{}, attrs) do
     account
     |> cast(attrs, [:ally_code, :name, :guild_name])
-    |> validate_required([:ally_code, :name, :guild_name])
+    |> validate_required([:ally_code, :name])
   end
 end

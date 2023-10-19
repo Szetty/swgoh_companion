@@ -5,7 +5,18 @@ defmodule SWGOHCompanion.SDK do
     common_quote =
       quote do
         alias SWGOHCompanion.SDK
-        alias SDK.Models.{PlayerData, Character, Stats, Mod, Gear, GAC}
+
+        alias SDK.Models.{
+          PlayerData,
+          Character,
+          Stats,
+          Mod,
+          Gear,
+          GAC,
+          ModSecondaryStats,
+          GuildProfile,
+          GuildMember
+        }
       end
 
     spreadsheet_quotes =
@@ -32,6 +43,7 @@ defmodule SWGOHCompanion.SDK do
 
   defdelegate get_all_player_data, to: __MODULE__.Hotutils
   defdelegate get_current_gac_bracket(ally_code), to: __MODULE__.SWGOHGG
+  defdelegate get_guild_profile(guild_id), to: __MODULE__.SWGOHGG
 
   def recursive_merge(_key \\ nil, term1, term2)
 

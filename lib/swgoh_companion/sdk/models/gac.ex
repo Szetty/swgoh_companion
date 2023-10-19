@@ -9,7 +9,7 @@ defmodule SWGOHCompanion.SDK.Models.GAC do
       # DateTime.t()
       :start_time,
       # [String.t()]
-      ally_codes: [],
+      ally_codes: []
     ]
   end
 end

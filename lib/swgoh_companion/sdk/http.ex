@@ -6,7 +6,17 @@ defmodule SWGOHCompanion.SDK.HTTP do
   def get_json(url, headers \\ []) do
     url
     |> get_http_body(headers)
-    |> Jason.decode!()
+    |> then(fn resp ->
+      resp
+      |> Jason.decode()
+      |> case do
+        {:ok, json} ->
+          json
+
+        {:error, reason} ->
+          raise("Error with #{inspect(reason)} for #{resp}")
+      end
+    end)
   end
 
   def get_http_body(url, headers \\ []) do

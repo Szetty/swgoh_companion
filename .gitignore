@@ -29,3 +29,4 @@ service-account.json
 pgdata
 out
 .elixir_ls
+.DS_Store

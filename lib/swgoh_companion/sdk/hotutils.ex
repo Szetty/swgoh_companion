@@ -1,7 +1,7 @@
 defmodule SWGOHCompanion.SDK.Hotutils do
   alias SWGOHCompanion.SDK
   alias SDK.HTTP
-  alias SDK.Models.{PlayerData, Character, Mod, Stats, Gear}
+  alias SDK.Models.{PlayerData, Character, Mod, Stats, Gear, ModSecondaryStats}
 
   @url "https://hotutils.com/Production/account/data/all"
   @sessionID "4a9accbe-cb2e-40eb-84cd-0ca76b9ccd3e"
@@ -45,6 +45,10 @@ defmodule SWGOHCompanion.SDK.Hotutils do
            "count" => gear_count
          }
        }) do
+    if id == "VADER" do
+      IO.inspect(mods)
+    end
+
     %Character{
       id: id,
       power: power,
@@ -85,7 +89,8 @@ defmodule SWGOHCompanion.SDK.Hotutils do
       primary_stats: primary_stats,
       set_stat_name: decode_set_stat_name(set),
       secondary_stats: decode_secondary_stats(secondary_stats),
-      slot: slot
+      slot: slot,
+      slot_name: to_slot_name(slot)
     }
   end
 
@@ -104,18 +109,60 @@ defmodule SWGOHCompanion.SDK.Hotutils do
     |> String.replace_leading("icon_", "")
     |> String.replace_leading("attack", "offense")
     |> String.replace_leading("armor", "defense")
+    |> String.replace_leading("accuracy", "potency")
     |> String.split("_")
     |> Enum.join(" ")
     |> String.capitalize()
   end
 
   defp decode_secondary_stats(secondary_stats) do
-    speed_secondary =
-      secondary_stats
-      |> Enum.find(%{}, fn %{"statName" => stat_name} -> stat_name == "Speed" end)
+    secondary_stat_finder = fn stat_id ->
+      %{"value" => value, "rolls" => rolls} =
+        Enum.find(
+          secondary_stats,
+          %{"value" => 0, "rolls" => 0},
+          fn
+            %{"statId" => ^stat_id} -> true
+            _ -> false
+          end
+        )
 
-    speed = Map.get(speed_secondary, "value", 0)
+      %{value: value, rolls: rolls}
+    end
 
-    %Stats{speed: speed}
+    speed = secondary_stat_finder.(5)
+    offense = secondary_stat_finder.(41)
+    offense_percent = secondary_stat_finder.(48)
+    potency = secondary_stat_finder.(17)
+    tenacity = secondary_stat_finder.(18)
+    health = secondary_stat_finder.(1)
+    health_percent = secondary_stat_finder.(55)
+    protection = secondary_stat_finder.(28)
+    protection_percent = secondary_stat_finder.(56)
+    crit_chance = secondary_stat_finder.(53)
+
+    %ModSecondaryStats{
+      speed: speed,
+      offense: offense,
+      offense_percent: offense_percent,
+      potency: potency,
+      tenacity: tenacity,
+      health: health,
+      health_percent: health_percent,
+      protection: protection,
+      protection_percent: protection_percent,
+      crit_chance: crit_chance
+    }
+  end
+
+  defp to_slot_name(slot) do
+    case slot do
+      2 -> "Square"
+      3 -> "Arrow"
+      4 -> "Diamond"
+      5 -> "Triangle"
+      6 -> "Circle"
+      7 -> "Cross"
+    end
   end
 end
