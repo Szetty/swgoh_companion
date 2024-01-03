@@ -7,10 +7,10 @@ defmodule SWGOHCompanion.Repo.GACRound do
   @primary_key false
   schema "gac_rounds" do
     field :id, :string, primary_key: true
-    field :week, :string, null: false
-    field :week_nr, :integer, null: false
-    field :round, :integer, null: false
-    field :gac_nr, :integer, null: false
+    field :week, :string
+    field :week_nr, :integer
+    field :round, :integer
+    field :gac_nr, :integer
 
     has_many :gac_round_rosters, Repo.GACRoundRoster, references: :id
     has_many :gac_rosters, through: [:gac_round_rosters, :gac_roster]

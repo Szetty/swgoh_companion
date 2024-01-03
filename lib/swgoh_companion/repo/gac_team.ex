@@ -6,9 +6,9 @@ defmodule SWGOHCompanion.Repo.GACTeam do
 
   schema "gac_teams" do
     belongs_to :gac_roster, Repo.GACRoster
-    field :leader_acronym, :string, null: false
-    field :characters, {:array, :map}, null: false
-    field :stats, :map, null: false, default: %{}
+    field :leader_acronym, :string
+    field :characters, {:array, :map}
+    field :stats, :map, default: %{}
 
     timestamps(updated_at: false)
   end

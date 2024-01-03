@@ -7,8 +7,8 @@ defmodule SWGOHCompanion.Repo.Account do
   @primary_key false
   schema "accounts" do
     field :ally_code, :string, primary_key: true
-    field :name, :string, null: false
-    field :guild_name, :string, null: false
+    field :name, :string
+    field :guild_name, :string
 
     has_many :gac_rosters, Repo.GACRoster, references: :ally_code, foreign_key: :ally_code
 

@@ -35,7 +35,8 @@ defmodule SWGOHCompanion.MixProject do
     [
       {:phoenix, "~> 1.6.6"},
       {:phoenix_ecto, "~> 4.4"},
-      {:ecto_sql, "~> 3.6"},
+      {:ecto_sql, "~> 3.10"},
+      {:ecto, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
@@ -46,7 +47,7 @@ defmodule SWGOHCompanion.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:elixir_google_spreadsheets, "~> 0.1.17"},
+      {:elixir_google_spreadsheets, "~> 0.3"},
       {:tesla, "~> 1.4"},
       {:floki, ">= 0.31.0"},
       {:morphix, "~> 0.8.0"},

@@ -24,21 +24,21 @@ defmodule S.GAC do
 
   def transform_teams_to_input do
     ~s"""
-    mt,av,talia
-    gba,sf,gsp
-    rolo,chs,pl
-    bossk,zw,boba
-    bam,ig11,kuiil
-    mm,bd,wa
+    aa,pl,atf
+    lv,maul,rg
+    dash,l337,vc
     qgj,jka,kam
+    bossk,boba,zw
     malgus,dr,bsf
-    50r-t,ddk,gg
-    ptl,bt1,000
-    hs,kj,sw
-    co,mv,zaal
-    cc,wicket,ee
-    reva,7th,gi
-    rex,fives,crex
+    gi,9th,2nd
+    ar,je,bistan
+    soj,cb,dengar
+    rey,ben,50rt
+    rolo,bd,chs
+    sana,hondo,cara
+    5th,8th,7th
+    embo,boushh,ig88
+    jtr,r2d2,bb8
     """
     |> String.split("\n")
     |> Enum.reject(&(&1 == ""))

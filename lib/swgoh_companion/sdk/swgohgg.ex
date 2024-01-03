@@ -337,7 +337,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
          %{
            "guild_id" => guild_id,
            "name" => name,
-           "member_count" => 50,
+           "member_count" => member_count,
            "members" => members
          },
          guild_id
@@ -347,7 +347,7 @@ defmodule SWGOHCompanion.SDK.SWGOHGG do
     %GuildProfile{
       guild_id: guild_id,
       name: name,
-      member_count: 50,
+      member_count: member_count,
       members: members
     }
   end

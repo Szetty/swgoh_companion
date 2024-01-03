@@ -10,9 +10,9 @@ defmodule SWGOHCompanion.Repo.GACRoster do
       references: :ally_code,
       type: :string
 
-    field :computed_at_date, :date, null: false
-    field :characters, {:array, :map}, null: false
-    field :stats, :map, null: false, default: %{}
+    field :computed_at_date, :date
+    field :characters, {:array, :map}
+    field :stats, :map, default: %{}
 
     has_many :gac_teams, Repo.GACTeam
 

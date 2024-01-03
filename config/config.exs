@@ -7,7 +7,7 @@
 # General application configuration
 import Config
 
-config :goth, :json, File.read!("./service-account.json")
+config :elixir_google_spreadsheets, json: "./service-account.json" |> File.read!
 
 config :elixir_google_spreadsheets, :client,
   request_workers: 1,

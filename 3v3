@@ -1,0 +1,79 @@
+Checks:
+1. if enemy has no Han Solo on O -> put Aphra on D
+2. if enemy does not have QGJ omi /w JKA on O -> put DRex on D
+3. if enemy has no Savage omi on O -> CLS on D
+4. if enemy has no Jedi Cal on O -> Malgus on D
+5. if enemy has no Inqs on O -> QGJ on D
+
+1. ?
+2. DRex on D
+3. ?
+4. Malgus on D
+5. QGJ on D
+
+LV;558;SLKR,WT,SET
+Rey;534;EP,MJ,SK
+Malgus;300;JKL,Hoda,JKCK
+JTR;280;Padme,ST,MG
+GI;262;Traya,DN,Sion
+AR;311;Aphra,BT1,000
+Sana;279;BAM,Han,Chewie
+5th;266;SO
+QGJ;288;GI Inqs
+ROLO;245;EN
+Embo;246;Wampa
+SOJ;256;Malak
+AA;297;IT
+Bossk;307;CLS
+Dash;274;JKR,MW,GMY
+
+;;Bossk,Boba,Mando
+;;IV,DeathT,RangeT
+;;Maul,ISC,Candy
+;;IT,NS,BB,BHs,Phoenix
+;;GBA,GSp,GSo,SF
+;;AS,PK,KJ,EB,BS
+;;DV
+
+;;FOSFTP,FOX,FOS,Phasma,KR,SithT
+;;SET,GAT,MG,WT
+;;L337,Dengar
+;;SA
+;;JTR,BB8
+;;CD,DDK,AV,PTL,B1,B2
+;;5th,2nd,8th
+;;Dash,Hondo,IG11,Kuiil
+
+Finalizer;;Malevolence
+Executor;;Finalizer
+Leviathan;;Leviathan
+;;Executrix
+;;Home One
+;;Raddus
+;;Endurance
+
+Top:
+Sana
+NG,IG-100,Jango
+CC,Wicket,Kneesaa
+50RT,GG,DDK
+JMK,CAT,GK
+
+Bot:
+Cere,KRU,CK
+Leia
+Malgus,SM,DT
+Rex,Cpt.Rex,Fives
+QGJ,JKA,AT
+
+Back:
+Finn,Zorii,RHF
+Hux,FOO,FOTP
+Rey,Ben,BO
+GAS,ArcT,CTEcho
+DR,BSF,HK
+
+Fleets:
+Negotiator
+Chimaera
+Executor
