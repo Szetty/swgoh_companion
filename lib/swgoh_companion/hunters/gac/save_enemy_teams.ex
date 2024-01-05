@@ -6,9 +6,9 @@ defmodule SWGOHCompanion.Hunters.GAC.SaveEnemyTeams do
   alias Ecto.Multi
   import Ecto.Query
 
-  def save_enemy_teams(week, round_nr, teams) do
+  def save_enemy_teams(week, round_nr) do
     Common.fetch_roster(week, round_nr)
-    |> Common.form_teams_and_separate_rest_of_roster(teams)
+    |> Common.form_teams_and_separate_rest_of_roster()
     |> write_to_db(week, round_nr)
   end
 

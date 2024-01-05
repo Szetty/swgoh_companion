@@ -30,3 +30,5 @@ pgdata
 out
 .elixir_ls
 .DS_Store
+
+*.data

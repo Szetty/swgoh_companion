@@ -11,8 +11,13 @@ defmodule SWGOHCompanion.SDK.Spreadsheet do
         starting_row = Keyword.get(opts, :starting_row, @starting_row)
         starting_column = Keyword.get(opts, :starting_column, @starting_column)
         sheet_name = Keyword.get(opts, :sheet_name, @sheet_name)
+        clear_range = Keyword.get(opts, :clear_range)
 
         sheet = get_or_open_sheet(sheet_name, opts)
+
+        if clear_range do
+          GSS.Spreadsheet.clear_rows(sheet, [clear_range])
+        end
 
         rows
         |> to_spreadsheet_rows()

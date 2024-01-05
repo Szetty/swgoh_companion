@@ -19,33 +19,6 @@ defmodule SWGOHCompanion.Hunters.Common do
     ]
   end
 
-  @default_teams [
-    "STCT",
-    "501st",
-    "Geos",
-    ["ep", "mj", "dv"],
-    ["jkr", "gmy", "bs", "jb", "jkl", "gk", "hoda"],
-    "Imperial Troopers",
-    "CLS",
-    "Bounty Hunters",
-    ["padme", "jka", "at", "gk"],
-    ["bando", "ig11", "kuiil"],
-    "Plug & Play",
-    "Ewoks",
-    ["co", "candy", "zaal", "mv", "juhani"],
-    "Sith Empire",
-    "Phoenix",
-    "First Order",
-    "Nightsisters",
-    "Separatists",
-    "Sith Trio",
-    "MM + Rebel Fighters",
-    "Bad Batch",
-    "Galactic Legends",
-    "Resistance",
-    "Sith"
-  ]
-
   @team_acronyms %{
     "geos" => ["gba", "sf", "gso", "gsp", "ptl"],
     "cls" => ["cls", "chewie", "t&c", "c3po", "han"],
@@ -146,17 +119,9 @@ defmodule SWGOHCompanion.Hunters.Common do
     "jawas" => ["cn", "jawa", "dathcha", "js", "jawae"]
   }
 
-  def form_teams_and_separate_rest_of_roster(roster, teams, true) do
-    form_teams_and_separate_rest_of_roster(roster, teams ++ @default_teams)
-  end
-
-  def form_teams_and_separate_rest_of_roster(roster, teams, false) do
-    form_teams_and_separate_rest_of_roster(roster, teams)
-  end
-
-  def form_teams_and_separate_rest_of_roster(roster, teams) do
+  def form_teams_and_separate_rest_of_roster(roster) do
     teams =
-      teams
+      get_gac_enemy_roster()
       |> Enum.map(fn
         team when is_binary(team) -> {team, @team_acronyms[String.downcase(team)]}
         team when is_list(team) -> team
@@ -303,5 +268,13 @@ defmodule SWGOHCompanion.Hunters.Common do
         characters: characters
       }
     end
+  end
+
+  defp get_gac_enemy_roster do
+    "gac_enemy_roster"
+    |> File.read!()
+    |> String.split("\n")
+    |> Enum.reject(&(&1 == ""))
+    |> Enum.map(&String.split(&1, ","))
   end
 end

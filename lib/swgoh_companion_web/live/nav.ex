@@ -1,5 +1,5 @@
 defmodule SWGOHCompanionWeb.Nav do
-  import Phoenix.LiveView
+  # import Phoenix.LiveView
 
   def on_mount(:default, _params, _session, socket) do
     socket = socket

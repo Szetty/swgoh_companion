@@ -8,10 +8,10 @@ defmodule SWGOHCompanion.Hunters.GAC.UpsertEnemyTeams do
   alias SWGOHCompanion.Hunters.Common
   alias Common.Team
 
-  def upsert_enemy_teams(week, round_nr, teams, use_default_teams?) do
+  def upsert_enemy_teams(week, round_nr) do
     Common.fetch_roster(week, round_nr)
-    |> Common.form_teams_and_separate_rest_of_roster(teams, use_default_teams?)
-    |> write_rows()
+    |> Common.form_teams_and_separate_rest_of_roster()
+    |> write_rows(clear_range: "A2:K500")
   end
 
   def to_spreadsheet_rows({teams, rest_of_roster}) do
@@ -25,7 +25,7 @@ defmodule SWGOHCompanion.Hunters.GAC.UpsertEnemyTeams do
                        omicron_sum: omicron_sum,
                        characters: characters
                      } ->
-        [[name, power_sum, "", "", max_speed, zeta_sum, "", omicron_sum, ""]] ++
+        [[name, power_sum, "", "", max_speed, "", "", zeta_sum, "", omicron_sum, ""]] ++
           Enum.map(characters, &stringify_character/1) ++
           [[]]
       end)
@@ -42,7 +42,9 @@ defmodule SWGOHCompanion.Hunters.GAC.UpsertEnemyTeams do
          name: name,
          power: power,
          stats: %Stats{
-           speed: speed
+           speed: speed,
+           tenacity: tenacity,
+           potency: potency
          },
          gear: %Gear{
            level: level,
@@ -63,6 +65,8 @@ defmodule SWGOHCompanion.Hunters.GAC.UpsertEnemyTeams do
       "#{level}-#{count}",
       relic_tier,
       speed,
+      "#{tenacity}%",
+      "#{potency}%",
       zeta_count,
       zeta_abilities,
       omicron_count,
