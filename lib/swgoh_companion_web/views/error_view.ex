@@ -1,5 +1,5 @@
 defmodule SWGOHCompanionWeb.ErrorView do
-  use SWGOHCompanionWeb, :view
+  # use SWGOHCompanionWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

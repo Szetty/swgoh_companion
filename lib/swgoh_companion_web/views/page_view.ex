@@ -1,3 +1,3 @@
 defmodule SWGOHCompanionWeb.PageView do
-  use SWGOHCompanionWeb, :view
+  # use SWGOHCompanionWeb, :view
 end
